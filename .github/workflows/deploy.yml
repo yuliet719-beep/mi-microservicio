@@ -14,4 +14,4 @@ jobs:
       - name: Build image
         run: docker build -t yulietrojas/mi-microservicio:latest -f app/Dockerfile app
       - name: Push image
-        run: docker push yulietrojas/mi-microservicio:latest
+        run: docker push yulietrojas/mi-microservicio:latest  
