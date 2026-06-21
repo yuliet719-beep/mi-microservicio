@@ -8,10 +8,10 @@ jobs:
   build-and-push:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - name: Login to Docker Hub
-      run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
-    - name: Build and push
-      run: |
-        docker build -t yulietrojas/mi-microservicio:latest -f app/Dockerfile app
-        docker push yulietrojas/mi-microservicio:latest
+      - uses: actions/checkout@v4
+      - name: Login to Docker Hub
+        run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+      - name: Build image
+        run: docker build -t yulietrojas/mi-microservicio:latest -f app/Dockerfile app
+      - name: Push image
+        run: docker push yulietrojas/mi-microservicio:latest
