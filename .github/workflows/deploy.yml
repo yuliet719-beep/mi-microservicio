@@ -21,3 +21,5 @@ jobs:
         tags: yulietrojas/mi-microservicio:latest
 
 # pipeline v1
+
+# retry
