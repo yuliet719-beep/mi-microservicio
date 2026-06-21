@@ -1,4 +1,4 @@
-name: CI/CD Pipeline
+nname: CI/CD Pipeline
 
 on:
   push:
@@ -11,8 +11,10 @@ jobs:
       - uses: actions/checkout@v4
       - name: Login to Docker Hub
         run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+      - name: List files
+        run: find . -name "Dockerfile"
       - name: Build image
         working-directory: app
         run: docker build -t yulietrojas/mi-microservicio:latest .
       - name: Push image
-        run: docker push yulietrojas/mi-microservicio:latest  
+        run: docker push yulietrojas/mi-microservicio:latest
