@@ -1,0 +1,6 @@
+replicaCount: 2
+
+image:
+  repository: mi-microservicio
+  tag: v1
+  pullPolicy: Never

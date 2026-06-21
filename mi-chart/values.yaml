@@ -1,0 +1,12 @@
+replicaCount: 1
+
+image:
+  repository: yulietrojas/mi-microservicio
+  tag: v1
+  pullPolicy: Always
+
+service:
+  type: ClusterIP
+  port: 8000
+
+containerPort: 8000
