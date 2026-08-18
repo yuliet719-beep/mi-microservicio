@@ -1,6 +1,6 @@
 replicaCount: 2
 
 image:
-  repository: mi-microservicio
-  tag: v1
-  pullPolicy: Never
+  repository: yulietrojas/mi-microservicio
+  tag: "stable"
+  pullPolicy: IfNotPresent

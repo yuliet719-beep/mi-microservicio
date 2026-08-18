@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/yuliet719-beep/mi-microservicio.git
     targetRevision: main
-    path: mi-chart
+    path: helm
     helm:
       valueFiles:
       - values-dev.yaml
