@@ -78,7 +78,7 @@ pipeline {
             }
             steps {
                 sh '''
-                tar -C "$WORKSPACE" -cf - helm | docker run --rm -i alpine/helm:3.16.1 sh -c "mkdir -p /workspace && tar -xf - -C /workspace && helm lint /workspace/helm -f /workspace/helm/values-dev.yaml"
+                tar -C "$WORKSPACE" -cf - helm | docker run --rm -i --entrypoint sh alpine/helm:3.16.1 -c "mkdir -p /workspace && tar -xf - -C /workspace && helm lint /workspace/helm -f /workspace/helm/values-dev.yaml"
                 '''
             }
         }
