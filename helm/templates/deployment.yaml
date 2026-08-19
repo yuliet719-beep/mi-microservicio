@@ -21,6 +21,10 @@ spec:
         ports:
         - name: http
           containerPort: {{ .Values.containerPort }}
+        resources:
+          {{- toYaml .Values.resources | nindent 10 }}
+        securityContext:
+          {{- toYaml .Values.securityContext | nindent 10 }}
         readinessProbe:
           httpGet:
             path: /health
