@@ -1,6 +1,6 @@
 replicaCount: 1
 
 image:
-  repository: 94manuel/mi-microservicio
+  repository: yulietrojas/mi-microservicio
   tag: 7-cdc4d9a
   pullPolicy: Always

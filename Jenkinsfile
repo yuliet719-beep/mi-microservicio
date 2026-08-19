@@ -6,7 +6,7 @@ pipeline {
     }
 
     environment {
-        IMAGE_NAME = '94manuel/mi-microservicio'
+        IMAGE_NAME = 'yulietrojas/mi-microservicio'
         HELM_VALUES_FILE = 'helm/values-dev.yaml'
     }
 
