@@ -76,7 +76,8 @@ La actualización GitOps agrega `[skip jenkins]` al commit automático para evit
 
 - `argocd/application.yaml` apunta al chart real en `helm/`.
 - `helm/values-dev.yaml` define la imagen del ambiente de desarrollo y es el archivo que Jenkins actualiza en cada liberación.
-- `helm/templates/deployment.yaml` incluye `readinessProbe` y `livenessProbe` sobre `/health`, lo que mejora la operabilidad del despliegue.
+- `helm/values-prod.yaml` queda preparado para una futura Application de Argo CD en producción (2 réplicas, tag `stable`, `pullPolicy: IfNotPresent`). No se despliega automáticamente en este entregable: solo se declara `argocd/application.yaml` apuntando a `values-dev.yaml`.
+- `helm/templates/deployment.yaml` incluye `readinessProbe` y `livenessProbe` sobre `/health`, además de `resources` (requests/limits) y un `securityContext` básico (`runAsNonRoot`, sin escalamiento de privilegios).
 
 ## Credenciales necesarias en Jenkins
 
