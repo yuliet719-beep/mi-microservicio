@@ -107,6 +107,7 @@ pipeline {
                     sh '''
                     git config user.name "Jenkins"
                     git config user.email "jenkins@local"
+                    sed -i "s|repository: .*|repository: ${IMAGE_NAME}|" ${HELM_VALUES_FILE}
                     sed -i "s|tag: .*|tag: \"${IMAGE_TAG}\"|" ${HELM_VALUES_FILE}
                     git add ${HELM_VALUES_FILE}
 
