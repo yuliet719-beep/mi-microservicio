@@ -37,6 +37,10 @@ Capturas propias almacenadas en el repositorio:
 4. El build Jenkins #7 registrado durante la practica termino en `SUCCESS` tras ejecutar checkout, dependencias, flake8, pytest, build Docker, Helm lint, publicacion Docker y actualizacion GitOps. La salida confirmada registra las tres pruebas como `PASSED`, `1 chart(s) linted, 0 chart(s) failed` y `Finished: SUCCESS`.
 5. `argocd/application.yaml` usa el chart Helm, la rama `main`, `values-dev.yaml`, `prune` y `selfHeal`.
 
+## Estado de verificacion GitOps
+
+En la comprobacion del 30 de agosto de 2026, Argo CD detecto y sincronizo la revision `4fbe8de`, pero el estado de salud quedo `Progressing`. El evento del pod identifica la causa: la imagen remota `yulietrojas/mi-microservicio:latest` que esta publicada actualmente se ejecuta como `root`, mientras el chart exige `runAsNonRoot: true`. El Dockerfile del repositorio fue corregido y validado localmente con imagen distroless y usuario `nonroot:nonroot`; para completar la evidencia de Argo CD en estado `Healthy` se debe publicar esa imagen corregida usando credenciales con permiso de escritura sobre el namespace `yulietrojas`, y ejecutar de nuevo el build Jenkins.
+
 ## Capturas para anexar
 
 1. Jenkins, pantalla Pipeline Overview del build exitoso.

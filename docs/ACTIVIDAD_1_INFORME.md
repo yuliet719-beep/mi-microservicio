@@ -46,6 +46,10 @@ docker compose -f docker-compose.monitoring.yml up --build -d
 
 Abrir Grafana en `http://localhost:3000` y Prometheus en `http://localhost:9090`. Producir trafico con solicitudes a `http://localhost:8001/health` y `http://localhost:8001/hello`, y capturar el dashboard. La definicion de alertas se puede verificar en Prometheus, menu **Alerts**.
 
+## Estado de despliegue y mejora pendiente
+
+La validacion del flujo encontro una condicion de integracion concreta: Argo CD sincronizo la revision de Git, pero el pod nuevo no puede cumplir `runAsNonRoot` porque la etiqueta remota `yulietrojas/mi-microservicio:latest` contiene una imagen previa que se ejecuta como root. El Dockerfile del repositorio fue endurecido con una imagen runtime distroless y usuario `nonroot:nonroot`; la mejora queda lista para publicacion. Para cerrar el ciclo GitOps con estado `Healthy`, Jenkins debe publicar esta nueva imagen usando una credencial de Docker Hub que tenga permiso para escribir en `yulietrojas/mi-microservicio` y actualizar el tag de `values-dev.yaml`.
+
 ## Reflexion
 
 Separar CI, CD, GitOps y observabilidad disminuye el riesgo operacional. GitHub Actions detecta defectos cerca del cambio; Jenkins construye un artefacto trazable; Helm convierte configuracion en manifiestos repetibles; Argo CD evita credenciales de Kubernetes dentro del pipeline; y Prometheus/Grafana convierten el comportamiento en produccion en una señal observable. El principal aprendizaje es que automatizar el despliegue no es suficiente: un flujo maduro requiere controles de seguridad, trazabilidad de imagen y monitoreo posterior a la liberacion, una relacion coherente con la disciplina SRE (Google, n.d.).
