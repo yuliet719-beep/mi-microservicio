@@ -5,7 +5,7 @@
 
 ## Objetivo
 
-Implementar un flujo CI/CD para un microservicio FastAPI que integre validacion de calidad, pruebas, seguridad, empaquetado Docker, despliegue declarativo y observabilidad. La solucion evita que el pipeline escriba directamente sobre Kubernetes: Jenkins actualiza el estado deseado en Git y Argo CD realiza la sincronizacion.
+Implementar un flujo CI/CD para un microservicio FastAPI que integre validacion de calidad, pruebas, seguridad, empaquetado Docker, despliegue declarativo y observabilidad. La solucion evita que el pipeline escriba directamente sobre Kubernetes: Jenkins actualiza el estado deseado en Git y Argo CD realiza la sincronizacion. Este enfoque aplica la separacion entre construccion, pruebas y despliegue recomendada para entregas confiables (Humble & Farley, 2010).
 
 ## Arquitectura y flujo
 
@@ -32,11 +32,11 @@ La ejecucion Jenkins #7 documentada durante la practica termino en `SUCCESS`: la
 
 ## Seguridad y recomendaciones
 
-SonarCloud analiza las fuentes Python y Snyk analiza las dependencias declaradas. Los secretos `SONAR_TOKEN` y `SNYK_TOKEN` se gestionan desde GitHub Actions, mientras que Jenkins usa credenciales de Docker Hub y GitHub administradas por el servidor. Las recomendaciones son: revisar el Quality Gate antes de promover una version, resolver vulnerabilidades de severidad alta, utilizar tokens de alcance minimo y rotar toda contrasena que haya sido compartida fuera de un gestor de secretos.
+SonarCloud analiza las fuentes Python y Snyk analiza las dependencias declaradas. Los secretos `SONAR_TOKEN` y `SNYK_TOKEN` se gestionan desde GitHub Actions, mientras que Jenkins usa credenciales de Docker Hub y GitHub administradas por el servidor. Esta combinacion integra analisis de calidad y escaneo de dependencias durante CI (GitHub, 2026; Snyk, n.d.). Las recomendaciones son: revisar el Quality Gate antes de promover una version, resolver vulnerabilidades de severidad alta, utilizar tokens de alcance minimo y rotar toda contrasena que haya sido compartida fuera de un gestor de secretos.
 
 ## Monitoreo y alertas
 
-`prometheus-fastapi-instrumentator` expone `/metrics`. Prometheus recolecta cada 15 segundos y Grafana carga automaticamente el dashboard **Mi Microservicio - Operacion**. Este muestra estado del objetivo (`up`), memoria residente, uso de CPU y solicitudes HTTP por handler, metodo y codigo de respuesta. Se definieron dos alertas: indisponibilidad de la aplicacion durante un minuto y memoria residente superior a 100 MiB durante cinco minutos.
+`prometheus-fastapi-instrumentator` expone `/metrics`. Prometheus recolecta cada 15 segundos y Grafana carga automaticamente el dashboard **Mi Microservicio - Operacion**. Este muestra estado del objetivo (`up`), memoria residente, uso de CPU y solicitudes HTTP por handler, metodo y codigo de respuesta. Prometheus se utiliza para recolectar series temporales y Grafana para visualizarlas operacionalmente (Prometheus, n.d.; Grafana Labs, n.d.). Se definieron dos alertas: indisponibilidad de la aplicacion durante un minuto y memoria residente superior a 100 MiB durante cinco minutos.
 
 ## Ejecucion de la evidencia
 
@@ -48,4 +48,18 @@ Abrir Grafana en `http://localhost:3000` y Prometheus en `http://localhost:9090`
 
 ## Reflexion
 
-Separar CI, CD, GitOps y observabilidad disminuye el riesgo operacional. GitHub Actions detecta defectos cerca del cambio; Jenkins construye un artefacto trazable; Helm convierte configuracion en manifiestos repetibles; Argo CD evita credenciales de Kubernetes dentro del pipeline; y Prometheus/Grafana convierten el comportamiento en produccion en una señal observable. El principal aprendizaje es que automatizar el despliegue no es suficiente: un flujo maduro requiere controles de seguridad, trazabilidad de imagen y monitoreo posterior a la liberacion.
+Separar CI, CD, GitOps y observabilidad disminuye el riesgo operacional. GitHub Actions detecta defectos cerca del cambio; Jenkins construye un artefacto trazable; Helm convierte configuracion en manifiestos repetibles; Argo CD evita credenciales de Kubernetes dentro del pipeline; y Prometheus/Grafana convierten el comportamiento en produccion en una señal observable. El principal aprendizaje es que automatizar el despliegue no es suficiente: un flujo maduro requiere controles de seguridad, trazabilidad de imagen y monitoreo posterior a la liberacion, una relacion coherente con la disciplina SRE (Google, n.d.).
+
+## Referencias
+
+GitHub. (2026). *GitHub Actions documentation*. https://docs.github.com/actions
+
+Grafana Labs. (n.d.). *Grafana documentation*. https://grafana.com/docs/grafana/
+
+Google. (n.d.). *How SRE relates to other disciplines*. https://sre.google/workbook/how-sre-relates/
+
+Humble, J., & Farley, D. (2010). *Continuous delivery: Reliable software releases through build, test, and deployment automation*. Addison-Wesley Professional.
+
+Prometheus. (n.d.). *Prometheus documentation*. https://prometheus.io/docs/
+
+Snyk. (n.d.). *Snyk Open Source documentation*. https://docs.snyk.io/scan-with-snyk/snyk-open-source

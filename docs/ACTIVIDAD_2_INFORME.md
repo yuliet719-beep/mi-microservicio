@@ -4,7 +4,7 @@
 
 ## Resumen del incidente simulado
 
-Durante la configuracion del flujo de entrega se simulo un incidente de liberacion: Jenkins construia la imagen correctamente, pero el despliegue no quedaba disponible. El analisis encontro dos factores: una diferencia entre la etiqueta/repositorio publicados y los valores consumidos por Helm, y la necesidad de validar el chart antes de publicar. El riesgo era liberar una imagen que no pudiera ser encontrada por Kubernetes o dejar el servicio sin endpoints utiles.
+Durante la configuracion del flujo de entrega se simulo un incidente de liberacion: Jenkins construia la imagen correctamente, pero el despliegue no quedaba disponible. El analisis encontro dos factores: una diferencia entre la etiqueta/repositorio publicados y los valores consumidos por Helm, y la necesidad de validar el chart antes de publicar. El riesgo era liberar una imagen que no pudiera ser encontrada por Kubernetes o dejar el servicio sin endpoints utiles. El caso confirma que la automatizacion debe contener mecanismos de retroalimentacion y recuperacion, no solo pasos de entrega (Humble & Farley, 2010).
 
 ## Linea de tiempo y respuesta
 
@@ -16,7 +16,7 @@ Durante la configuracion del flujo de entrega se simulo un incidente de liberaci
 
 ## Que salio bien
 
-El servicio tenia endpoint `/health`, pruebas automatizadas y validacion estandar con flake8. Esto redujo el espacio de diagnostico. El modelo GitOps tambien resulto util: el estado deseado quedo registrado en Git, por lo que el cambio fue auditable y reversible. La separacion de responsabilidades fue adecuada: Jenkins publica y actualiza configuracion; Argo CD sincroniza Kubernetes; Prometheus observa el comportamiento.
+El servicio tenia endpoint `/health`, pruebas automatizadas y validacion estandar con flake8. Esto redujo el espacio de diagnostico. El modelo GitOps tambien resulto util: el estado deseado quedo registrado en Git, por lo que el cambio fue auditable y reversible. La separacion de responsabilidades fue adecuada: Jenkins publica y actualiza configuracion; Argo CD sincroniza Kubernetes; Prometheus observa el comportamiento. Esta observabilidad permite que desarrollo y operaciones compartan señales y decisiones, en lugar de transferir problemas entre equipos (Google, n.d.).
 
 ## Que salio mal
 
@@ -24,13 +24,13 @@ La primera definicion no garantizaba de manera suficiente que el repositorio y t
 
 ## Aprendizajes y mejoras
 
-La leccion principal es que una liberacion es una cadena de contratos: codigo, imagen, tag, manifest y estado del cluster deben referirse al mismo artefacto. Como mejoras se definieron etiquetas inmutables, `helm lint`, actualizacion atomica de los valores GitOps, escaneo Snyk, analisis SonarCloud y alertas de disponibilidad/memoria. Como siguiente paso se recomienda agregar pruebas de despliegue en un namespace efimero y una politica que bloquee la promocion si el Quality Gate o Snyk reportan problemas graves.
+La leccion principal es que una liberacion es una cadena de contratos: codigo, imagen, tag, manifest y estado del cluster deben referirse al mismo artefacto. Como mejoras se definieron etiquetas inmutables, `helm lint`, actualizacion atomica de los valores GitOps, escaneo Snyk, analisis SonarCloud y alertas de disponibilidad/memoria. Como siguiente paso se recomienda agregar pruebas de despliegue en un namespace efimero y una politica que bloquee la promocion si el Quality Gate o Snyk reportan problemas graves. La mejora continua de la plataforma debe reducir friccion y hacer visibles los cuellos de botella para el equipo (Spotify Engineering, 2020).
 
 ## DevOps y MLOps
 
-DevOps automatiza la entrega de software convencional: compilar, probar, empaquetar, desplegar y observar una aplicacion. MLOps conserva esas practicas, pero agrega el ciclo de vida de datos y modelos. En DevOps, el artefacto principal suele ser una imagen o binario; en MLOps se deben versionar tambien dataset, caracteristicas, experimento, modelo, metricas de validacion y reglas de aprobacion.
+DevOps automatiza la entrega de software convencional: compilar, probar, empaquetar, desplegar y observar una aplicacion. MLOps conserva esas practicas, pero agrega el ciclo de vida de datos y modelos. En DevOps, el artefacto principal suele ser una imagen o binario; en MLOps se deben versionar tambien dataset, caracteristicas, experimento, modelo, metricas de validacion y reglas de aprobacion (Osipov, 2022).
 
-Un pipeline MLOps agregaria etapas de validacion de datos, entrenamiento reproducible, comparacion contra una linea base y registro del modelo. Tras desplegar, ademas de CPU, memoria y errores HTTP, se monitorean drift de datos, drift de concepto, sesgo y degradacion de precision. Herramientas como DVC permiten versionar datos, MLflow registra experimentos y modelos, y Kubeflow orquesta entrenamientos sobre Kubernetes.
+Un pipeline MLOps agregaria etapas de validacion de datos, entrenamiento reproducible, comparacion contra una linea base y registro del modelo. Tras desplegar, ademas de CPU, memoria y errores HTTP, se monitorean drift de datos, drift de concepto, sesgo y degradacion de precision. Herramientas como DVC permiten versionar datos, MLflow registra experimentos y modelos, y Kubeflow orquesta entrenamientos sobre Kubernetes (Osipov, 2022).
 
 ```text
 DevOps: codigo -> build -> pruebas -> imagen -> despliegue -> metricas operativas

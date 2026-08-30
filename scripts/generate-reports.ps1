@@ -7,6 +7,8 @@ $wdFormatDocumentDefault = 16
 $wdStyleTitle = -63
 $wdStyleHeading1 = -2
 $wdStyleHeading2 = -3
+$wdStyleNormal = -1
+$wdLineSpaceDouble = 2
 
 $reports = @(
     @{
@@ -23,6 +25,17 @@ try {
     foreach ($report in $reports) {
         $document = $word.Documents.Add()
         $inCodeBlock = $false
+        $inReferences = $false
+
+        $document.PageSetup.TopMargin = 72
+        $document.PageSetup.BottomMargin = 72
+        $document.PageSetup.LeftMargin = 72
+        $document.PageSetup.RightMargin = 72
+        $normalStyle = $document.Styles.Item($wdStyleNormal)
+        $normalStyle.Font.Name = 'Times New Roman'
+        $normalStyle.Font.Size = 12
+        $normalStyle.ParagraphFormat.LineSpacingRule = $wdLineSpaceDouble
+        $normalStyle.ParagraphFormat.SpaceAfter = 0
 
         foreach ($line in Get-Content $report.Source) {
             if ($line -eq '```' -or $line -like '```*') {
@@ -40,6 +53,11 @@ try {
             elseif ($line -match '^## (.+)') {
                 $paragraph.Range.Text = $matches[1]
                 $paragraph.Range.Style = $wdStyleHeading1
+                $paragraph.Range.Font.Name = 'Times New Roman'
+                $paragraph.Range.Font.Size = 12
+                $paragraph.Range.Font.Bold = 1
+                $paragraph.Range.ParagraphFormat.Alignment = 1
+                $inReferences = $matches[1] -eq 'Referencias'
             }
             elseif ($line -match '^### (.+)') {
                 $paragraph.Range.Text = $matches[1]
@@ -58,8 +76,14 @@ try {
                 $paragraph.Range.Font.Size = 9
             }
             else {
-                $paragraph.Range.Font.Name = 'Aptos'
-                $paragraph.Range.Font.Size = 11
+                $paragraph.Range.Font.Name = 'Times New Roman'
+                $paragraph.Range.Font.Size = 12
+                $paragraph.Range.ParagraphFormat.LineSpacingRule = $wdLineSpaceDouble
+                $paragraph.Range.ParagraphFormat.SpaceAfter = 0
+                if ($inReferences -and $line.Trim()) {
+                    $paragraph.Range.ParagraphFormat.LeftIndent = 36
+                    $paragraph.Range.ParagraphFormat.FirstLineIndent = -36
+                }
             }
 
             $paragraph.Range.InsertParagraphAfter() | Out-Null
