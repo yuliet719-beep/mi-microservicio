@@ -95,7 +95,7 @@ Configurar estos credentials de tipo `Username with password`:
 
 ## Seguridad
 
-El workflow de GitHub Actions incluye los jobs `sonarcloud` y `snyk`. Para ejecutarlos en GitHub se deben configurar los secretos `SONAR_TOKEN` y `SNYK_TOKEN`. El análisis de Snyk se mantiene como evidencia visible aunque encuentre vulnerabilidades, con el fin de que el reporte llegue al job y pueda revisarse. El alcance, la evidencia reproducible y las recomendaciones estan en `docs/INFORME_SEGURIDAD.md`.
+El workflow de GitHub Actions incluye los jobs `sonarcloud` y `snyk`. Para ejecutarlos en GitHub se deben configurar los secretos `SONAR_TOKEN` y `SNYK_TOKEN`. El análisis de Snyk se mantiene como evidencia visible aunque encuentre vulnerabilidades, con el fin de que el reporte llegue al job y pueda revisarse. El alcance, la evidencia reproducible y las recomendaciones se encuentran en `docs/Actividad_1_Laboratorio_Tecnico.docx`.
 
 ## Monitoreo con Prometheus y Grafana
 
