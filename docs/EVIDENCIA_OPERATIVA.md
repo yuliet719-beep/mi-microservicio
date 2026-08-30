@@ -24,12 +24,14 @@ Se generaron solicitudes a `/health` y `/hello` para alimentar las series HTTP. 
 ## Evidencia CI/CD y GitOps
 
 1. GitHub Actions ejecuta lint, pruebas, build Docker, SonarCloud y Snyk desde `.github/workflows/ci.yml`.
-2. El build Jenkins #7 registrado durante la practica termino en `SUCCESS` tras ejecutar checkout, dependencias, flake8, pytest, build Docker, Helm lint, publicacion Docker y actualizacion GitOps.
-3. `argocd/application.yaml` usa el chart Helm, la rama `main`, `values-dev.yaml`, `prune` y `selfHeal`.
+2. La ejecucion `33334905943` del 30 de agosto de 2026 termino en `success`: https://github.com/yuliet719-beep/mi-microservicio/actions/runs/33334905943
+3. Los cinco jobs finalizaron correctamente: `lint`, `test`, `docker-build-validation`, `snyk` y `sonarcloud`.
+4. El build Jenkins #7 registrado durante la practica termino en `SUCCESS` tras ejecutar checkout, dependencias, flake8, pytest, build Docker, Helm lint, publicacion Docker y actualizacion GitOps.
+5. `argocd/application.yaml` usa el chart Helm, la rama `main`, `values-dev.yaml`, `prune` y `selfHeal`.
 
 ## Capturas para anexar
 
 1. Jenkins, pantalla Pipeline Overview del build exitoso.
 2. Grafana, dashboard `Mi Microservicio - Operacion` mostrando series y estado `up`.
 3. Prometheus, pantalla Targets con estado `UP` y Alerts con las reglas cargadas.
-4. GitHub Actions, jobs `sonarcloud` y `snyk` con sus resultados visibles.
+4. GitHub Actions, ejecucion `33334905943`, con los jobs `sonarcloud` y `snyk` exitosos.
