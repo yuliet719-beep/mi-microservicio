@@ -73,10 +73,13 @@ jobs:
           python-version: '3.11'
       - name: Instalar dependencias
         run: pip install -r app/requirements.txt
+      - name: Instalar Snyk CLI
+        run: npm install -g snyk
       - name: Escaneo de vulnerabilidades con Snyk
-        uses: snyk/actions/python-3.11@master
         continue-on-error: true
         env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        run: snyk test --file=app/requirements.txt --package-manager=pip --severity-threshold=high
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
           args: --file=app/requirements.txt --severity-threshold=high
