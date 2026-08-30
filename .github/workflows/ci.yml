@@ -80,6 +80,3 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         run: snyk test --file=app/requirements.txt --package-manager=pip --severity-threshold=high
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        with:
-          args: --file=app/requirements.txt --severity-threshold=high
