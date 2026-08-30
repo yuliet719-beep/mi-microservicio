@@ -58,9 +58,9 @@ jobs:
           fetch-depth: 0
       - name: Análisis de SonarCloud
         uses: SonarSource/sonarqube-scan-action@v4
-      env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        SONAR_HOST_URL: https://sonarcloud.io
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: https://sonarcloud.io
   snyk:
     runs-on: ubuntu-latest
     needs: [lint, test]
