@@ -5,9 +5,11 @@ app = FastAPI()
 
 Instrumentator().instrument(app).expose(app)
 
+
 @app.get('/health')
 def health():
     return {'status': 'ok'}
+
 
 @app.get('/hello')
 def hello():
