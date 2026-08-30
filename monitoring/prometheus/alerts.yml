@@ -1,0 +1,19 @@
+groups:
+  - name: mi-microservicio-alerts
+    rules:
+      - alert: MicroserviceUnavailable
+        expr: up{job="mi-microservicio"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "El microservicio no responde a Prometheus"
+          description: "La instancia {{ $labels.instance }} lleva al menos un minuto sin exponer metricas."
+      - alert: HighProcessMemory
+        expr: process_resident_memory_bytes{job="mi-microservicio"} > 100 * 1024 * 1024
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Uso elevado de memoria del microservicio"
+          description: "La instancia {{ $labels.instance }} supero 100 MiB de memoria residente."

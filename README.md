@@ -32,6 +32,9 @@ Demostrar un flujo DevOps funcional y trazable que cubra:
 - `Jenkinsfile`: pipeline principal de CI/CD para la entrega.
 - `helm/`: chart de Helm para Kubernetes.
 - `argocd/`: manifiesto de Argo CD para sincronización GitOps.
+- `monitoring/`: configuracion de Prometheus, alertas y dashboard provisionado de Grafana.
+- `docker-compose.monitoring.yml`: stack local para la aplicacion, Prometheus y Grafana.
+- `docs/`: informes de las actividades y el informe de seguridad.
 
 ## Flujo CI en GitHub Actions
 
@@ -71,6 +74,10 @@ La actualización GitOps agrega `[skip jenkins]` al commit automático para evit
 | Helm | Plantillas de despliegue | Parametriza repositorio, tag, réplicas y probes del despliegue. |
 | Argo CD | GitOps | Toma el estado deseado desde Git y lo sincroniza automáticamente con Kubernetes. |
 | Kubernetes | Ejecución | Hospeda el microservicio y usa probes para verificar salud. |
+| SonarCloud | Calidad y seguridad | Analiza el código Python y publica el Quality Gate en el job `sonarcloud`. |
+| Snyk | Seguridad de dependencias | Identifica vulnerabilidades en las dependencias Python durante el job `snyk`. |
+| Prometheus | Recolección de métricas | Consulta `/metrics` de FastAPI cada 15 segundos y evalúa alertas. |
+| Grafana | Visualización | Carga un dashboard con estado, memoria, CPU y solicitudes HTTP. |
 
 ## Despliegue declarativo
 
@@ -85,6 +92,33 @@ Configurar estos credentials de tipo `Username with password`:
 
 1. `dockerhub-credentials`: usuario y contraseña o token de Docker Hub.
 2. `github-credentials`: usuario y token personal con permisos de push al repositorio.
+
+## Seguridad
+
+El workflow de GitHub Actions incluye los jobs `sonarcloud` y `snyk`. Para ejecutarlos en GitHub se deben configurar los secretos `SONAR_TOKEN` y `SNYK_TOKEN`. El análisis de Snyk se mantiene como evidencia visible aunque encuentre vulnerabilidades, con el fin de que el reporte llegue al job y pueda revisarse. El alcance, la evidencia reproducible y las recomendaciones estan en `docs/INFORME_SEGURIDAD.md`.
+
+## Monitoreo con Prometheus y Grafana
+
+La aplicacion expone metricas en `GET /metrics`. Para iniciar el stack local:
+
+```bash
+docker compose -f docker-compose.monitoring.yml up --build -d
+```
+
+Servicios disponibles:
+
+1. Microservicio: `http://localhost:8000/health`, `http://localhost:8000/metrics`.
+	El stack reserva el puerto interno `8000` y lo expone en el host como `8001` para no interferir con otros servicios locales: `http://localhost:8001/health`.
+2. Prometheus: `http://localhost:9090`, objetivo `mi-microservicio`.
+3. Grafana: `http://localhost:3000` con usuario `admin` y contraseña `admin` para uso local.
+
+El dashboard `Mi Microservicio - Operacion` se provisiona automaticamente. Presenta disponibilidad (`up`), memoria residente, uso de CPU y solicitudes HTTP. Las alertas `MicroserviceUnavailable` y `HighProcessMemory` se definen en `monitoring/prometheus/alerts.yml`.
+
+Para detener los servicios:
+
+```bash
+docker compose -f docker-compose.monitoring.yml down
+```
 
 ## Ejecución local
 
