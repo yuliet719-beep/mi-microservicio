@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Evidencia Jenkins Build 7</title>
+  <style>
+    body { background: #f5f7f9; color: #17212b; font: 16px Arial, sans-serif; margin: 48px; }
+    main { background: #ffffff; border: 1px solid #d0d7de; max-width: 980px; padding: 32px; }
+    h1 { color: #335061; margin-top: 0; }
+    .status { color: #1a7f37; font-size: 22px; font-weight: bold; }
+    pre { background: #1f2933; color: #d9e1e8; font: 14px Consolas, monospace; line-height: 1.55; overflow-wrap: break-word; padding: 24px; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Evidencia Jenkins: mi-microservicio-pipeline, build #7</h1>
+    <p class="status">Resultado verificado: SUCCESS</p>
+    <p>Extracto literal de la salida persistida por Jenkins para el build #7.</p>
+    <pre>tests/test_app.py::test_health_devuelve_ok PASSED                        [ 33%]
+tests/test_app.py::test_hello_devuelve_mensaje_esperado PASSED           [ 66%]
+tests/test_app.py::test_ruta_inexistente_devuelve_404 PASSED             [100%]
+
+1 chart(s) linted, 0 chart(s) failed
+
+docker push 94manuel/mi-microservicio:7-cdc4d9a
+docker push 94manuel/mi-microservicio:latest
+
+Pipeline CI/CD completado: validaciones ejecutadas, imagen publicada y manifiesto GitOps actualizado.
+Finished: SUCCESS</pre>
+  </main>
+</body>
+</html>
