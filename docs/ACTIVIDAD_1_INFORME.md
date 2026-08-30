@@ -28,7 +28,7 @@ Implementar un flujo CI/CD para un microservicio FastAPI que integre validacion 
 | GitOps | Helm y Argo CD | `argocd/application.yaml` apunta al chart `helm` y usa `values-dev.yaml`. |
 | Monitoreo | Prometheus y Grafana | `docker-compose.monitoring.yml` arranca ambos servicios y provisiona el dashboard. |
 
-La ejecucion Jenkins #7 documentada durante la practica termino en `SUCCESS`: ejecuto las etapas de checkout, dependencias, analisis estatico, pruebas unitarias, build Docker, validacion Helm, publicacion de imagen y actualizacion GitOps. Adicionalmente, la ejecucion GitHub Actions `33335315017` del 30 de agosto de 2026 finalizo exitosamente con los jobs `lint`, `test`, `docker-build-validation`, `snyk` y `sonarcloud`, y publico el artefacto descargable `snyk-report`. La evidencia operativa y las capturas propias estan consolidadas en `docs/EVIDENCIA_OPERATIVA.md`.
+La ejecucion Jenkins #7 documentada durante la practica termino en `SUCCESS`: la captura autenticada de Pipeline Overview muestra aprobados los stages de checkout, dependencias, analisis estatico, pruebas unitarias, build Docker, validacion Helm, publicacion de imagen y actualizacion GitOps. Adicionalmente, la ejecucion GitHub Actions `33335315017` del 30 de agosto de 2026 finalizo exitosamente con los jobs `lint`, `test`, `docker-build-validation`, `snyk` y `sonarcloud`, y publico el artefacto descargable `snyk-report`. La evidencia operativa y las capturas propias estan consolidadas en `docs/EVIDENCIA_OPERATIVA.md`.
 
 ## Seguridad y recomendaciones
 

@@ -27,7 +27,7 @@ Capturas propias almacenadas en el repositorio:
 2. `evidencia-grafana-dashboard.png`: dashboard Grafana con estado `1`, memoria, CPU y solicitudes HTTP reales.
 3. `evidencia-sonarcloud-quality-gate.png`: SonarQube Cloud muestra Quality Gate `Passed`, 0 nuevos issues y 0 Security Hotspots.
 4. `evidencia-github-actions-snyk-sonarcloud.png`: CI Pipeline exitoso, con los cinco jobs y un artefacto Snyk publicado.
-5. `evidencia-jenkins-build-7.png`: extracto de la salida real del build Jenkins #7 con pruebas, Helm lint, publicacion y `SUCCESS`.
+5. `evidencia-jenkins-build-7.png`: captura autenticada de Jenkins Pipeline Overview para el build #7; muestra en verde `Checkout`, dependencias, analisis estatico, pruebas, build Docker, validacion Helm, publicacion Docker, actualizacion GitOps y post acciones.
 
 ## Evidencia CI/CD y GitOps
 
