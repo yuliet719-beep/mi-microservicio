@@ -2,5 +2,5 @@ replicaCount: 1
 
 image:
   repository: yulietrojas/mi-microservicio
-  tag: 7-cdc4d9a
+  tag: latest
   pullPolicy: Always
