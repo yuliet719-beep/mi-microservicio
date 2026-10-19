@@ -1,0 +1,160 @@
+Fuente: https://unisabanae-learning.unisabana.edu.co/mod/assign/view.php?id=306420
+Consulta: 18/10/2026, America/Bogota
+
+GUIA DE EVALUACION
+
+
+
+N.º
+Criterio de Verificación
+Sí
+Parcial
+No
+
+
+
+
+1
+Selecciona un servicio o arquitectura objetivo claramente identificada (laboratorio de la actividad anterior).
+☐
+☐
+☐
+
+
+2
+Describe la arquitectura objetivo, sus componentes y dependencias principales.
+☐
+☐
+☐
+
+
+3
+Formula tres hipótesis de fallo siguiendo el formato: «En estado estable, cuando [condición], esperamos que [comportamiento del sistema]».
+☐
+☐
+☐
+
+
+4
+Las hipótesis se encuentran basadas en un comportamiento observable y medible del sistema.
+☐
+☐
+☐
+
+
+5
+Las hipótesis consideran estados estables, condiciones de fallo y resultados esperados.
+☐
+☐
+☐
+
+
+6
+Diseña tres experimentos de caos alineados con las hipótesis planteadas.
+☐
+☐
+☐
+
+
+7
+Define el tipo de fallo para cada experimento (latencia, error, resource exhaustion o network partition).
+☐
+☐
+☐
+
+
+8
+Establece el radio de impacto (blast radius) de cada experimento.
+☐
+☐
+☐
+
+
+9
+Define la duración de cada experimento de manera controlada y justificada.
+☐
+☐
+☐
+
+
+10
+Incluye mecanismos de recuperación o rollback automático para cada experimento.
+☐
+☐
+☐
+
+
+11
+Define las métricas de observabilidad que permitirán validar cada hipótesis.
+☐
+☐
+☐
+
+
+12
+Identifica el SLI que medirá el impacto de cada experimento (latencia, disponibilidad, tasa de errores, throughput, etc.).
+☐
+☐
+☐
+
+
+13
+Determina los logs, métricas y trazas que evidenciarán el comportamiento esperado del sistema.
+☐
+☐
+☐
+
+
+14
+Ejecuta al menos un experimento de caos en un entorno local o sandbox.
+☐
+☐
+☐
+
+
+15
+Documenta el procedimiento de ejecución del experimento y las herramientas utilizadas (tc netem, stress-ng u otras).
+☐
+☐
+☐
+
+
+16
+Presenta evidencias de los resultados obtenidos mediante capturas, registros o métricas del sistema.
+☐
+☐
+☐
+
+
+17
+Compara los resultados esperados frente a los resultados reales obtenidos durante el experimento.
+☐
+☐
+☐
+
+
+18
+Identifica la debilidad sistémica revelada por el experimento de caos.
+☐
+☐
+☐
+
+
+19
+Propone acciones de remediación viables para mejorar la resiliencia del sistema.
+☐
+☐
+☐
+
+
+20
+El documento presenta organización, redacción técnica adecuada y cumple la extensión solicitada (4–5 páginas).
+☐
+☐
+☐
+
+
+
+
+CRITERIOS DE CALIFICACION
+Selecciona un servicio o arquitectura objetivo claramente identificada (laboratorio de la actividad anterior).Selecciona un servicio o arquitectura objetivo claramente identificada (laboratorio de la actividad anterior).Puntuación máxima0.25Describe la arquitectura objetivo, sus componentes y dependencias principales.Describe la arquitectura objetivo, sus componentes y dependencias principales.Puntuación máxima0.25Formula tres hipótesis de fallo siguiendo el formato: «En estado estable, cuando [condición], esperamos que [comportamiento del sistema]».Formula tres hipótesis de fallo siguiendo el formato: «En estado estable, cuando [condición], esperamos que [comportamiento del sistema]».Puntuación máxima0.25Las hipótesis se encuentran basadas en un comportamiento observable y medible del sistema.Las hipótesis se encuentran basadas en un comportamiento observable y medible del sistema.fPuntuación máxima0.25Las hipótesis consideran estados estables, condiciones de fallo y resultados esperados.Las hipótesis consideran estados estables, condiciones de fallo y resultados esperados.Puntuación máxima0.25Diseña tres experimentos de caos alineados con las hipótesis planteadas.Diseña tres experimentos de caos alineados con las hipótesis planteadas.Puntuación máxima0.25Define el tipo de fallo para cada experimento (latencia, error, resource exhaustion o network partition).Define el tipo de fallo para cada experimento (latencia, error, resource exhaustion o network partition).Puntuación máxima0.25Establece el radio de impacto (blast radius) de cada experimento.Establece el radio de impacto (blast radius) de cada experimento.Puntuación máxima0.25Define la duración de cada experimento de manera controlada y justificada.Define la duración de cada experimento de manera controlada y justificada.Puntuación máxima0.25Incluye mecanismos de recuperación o rollback automático para cada experimento.Incluye mecanismos de recuperación o rollback automático para cada experimento.Puntuación máxima0.25Define las métricas de observabilidad que permitirán validar cada hipótesis.Define las métricas de observabilidad que permitirán validar cada hipótesis.Puntuación máxima0.25Identifica el SLI que medirá el impacto de cada experimento (latencia, disponibilidad, tasa de errores, throughput, etc.).Identifica el SLI que medirá el impacto de cada experimento (latencia, disponibilidad, tasa de errores, throughput, etc.).Puntuación máxima0.25Determina los logs, métricas y trazas que evidenciarán el comportamiento esperado del sistema.Determina los logs, métricas y trazas que evidenciarán el comportamiento esperado del sistema.Puntuación máxima0.25Ejecuta al menos un experimento de caos en un entorno local o sandbox.Ejecuta al menos un experimento de caos en un entorno local o sandbox.Puntuación máxima0.25Documenta el procedimiento de ejecución del experimento y las herramientas utilizadas (tc netem, stress-ng u otras).Documenta el procedimiento de ejecución del experimento y las herramientas utilizadas (tc netem, stress-ng u otras).Puntuación máxima0.25Presenta evidencias de los resultados obtenidos mediante capturas, registros o métricas del sistema.Presenta evidencias de los resultados obtenidos mediante capturas, registros o métricas del sistema.Puntuación máxima0.25Compara los resultados esperados frente a los resultados reales obtenidos durante el experimento.Compara los resultados esperados frente a los resultados reales obtenidos durante el experimento.Puntuación máxima0.25Identifica la debilidad sistémica revelada por el experimento de caos.Identifica la debilidad sistémica revelada por el experimento de caos.Puntuación máxima0.25Propone acciones de remediación viables para mejorar la resiliencia del sistema.Propone acciones de remediación viables para mejorar la resiliencia del sistema.Puntuación máxima0.25El documento presenta organización, redacción técnica adecuada y cumple la extensión solicitada (4–5 páginas).El documento presenta organización, redacción técnica adecuada y cumple la extensión solicitada (4–5 páginas).Puntuación máxima0.25
