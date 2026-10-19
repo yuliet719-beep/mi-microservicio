@@ -84,11 +84,6 @@ def phase(name, seconds, alert_name=None, started=None):
 
 def main():
     event('preflight')
-    # Prime a baseline sample for the auth counter before increase() is evaluated.
-    try:
-        urllib.request.urlopen('http://127.0.0.1:18080/auth', timeout=5)
-    except urllib.error.HTTPError as exc:
-        assert exc.code == 401
     # Wait for actual service startup and frozen baseline; no inferred readiness.
     deadline = time.monotonic() + 180
     while True:
@@ -104,6 +99,11 @@ def main():
         time.sleep(2)
     save('baseline.json', state['baseline'])
     event('baseline_ready')
+    # Wait for actual readiness before priming the authentication counter.
+    try:
+        urllib.request.urlopen('http://127.0.0.1:18080/auth', timeout=5)
+    except urllib.error.HTTPError as exc:
+        assert exc.code == 401
     phase('baseline', 20)
     baseline_alerts = get('http://127.0.0.1:19090/api/v1/alerts')['data']['alerts']
     assert not any(a['state'] == 'firing' and a['labels'].get('alertname') in
