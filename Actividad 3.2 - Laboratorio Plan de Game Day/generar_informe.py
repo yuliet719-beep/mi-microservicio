@@ -73,7 +73,7 @@ p('Se aborta si la referencia no cumple o se observan diez fallos consecutivos. 
 page()
 h('5. Ejecución real y evidencia')
 p(f'Inicio UTC: {R["started_utc"]}; fin UTC: {R["finished_utc"]}. Corresponde al 18 de octubre por la noche en Colombia (UTC-5). Se ejecutó E1 en Docker Desktop con Linux, FastAPI original y Prometheus. E2/E3 permanecen como diseños, cumpliendo el mínimo de un experimento ejecutado.')
-p('Procedimiento reproducible: (1) construir e iniciar compose.yaml; (2) ejecutar python "actividad 2/ejecutar.py"; (3) medir referencia; (4) programar watchdog e instalar netem; (5) muestrear hasta límite o parada; (6) retirar en finally, comprobar qdisc y medir recuperación. Comandos completos y salidas están en eventos.json. El script calcula automáticamente resultados.json desde las muestras; no introduce valores esperados como resultados.')
+p('Procedimiento reproducible: (1) construir e iniciar compose.yaml; (2) ejecutar python "Actividad 3.2 - Laboratorio Plan de Game Day/ejecutar.py"; (3) medir referencia; (4) programar watchdog e instalar netem; (5) muestrear hasta límite o parada; (6) retirar en finally, comprobar qdisc y medir recuperación. Comandos completos y salidas están en eventos.json. El script calcula automáticamente resultados.json desde las muestras; no introduce valores esperados como resultados.')
 data=[['Fase','Solicitudes / éxito','Disponibilidad','p95 cliente','2xx &lt;200 ms']]
 for key,label in [('baseline','Referencia'),('fault','Con fallo'),('recovery','Recuperación')]:
     v=R[key]

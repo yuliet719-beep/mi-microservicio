@@ -1,21 +1,21 @@
 # Actividad 3.2 - Laboratorio Plan de Game Day
 
-Entrega solicitada en la carpeta `actividad 2`. Informe principal: **Plan_Game_Day.pdf** (5 páginas). Servicio objetivo: el FastAPI del laboratorio anterior, sin modificar `app/app.py`.
+Entrega solicitada en la carpeta `Actividad 3.2 - Laboratorio Plan de Game Day`. Informe principal: **Plan_Game_Day.pdf** (5 páginas). Servicio objetivo: el FastAPI del laboratorio anterior, sin modificar `app/app.py`.
 
 ## Reproducción
 
 Desde la raíz del repositorio, con Docker Desktop activo y Python 3.11+:
 
 ```powershell
-docker compose -p actividad2-gameday -f "actividad 2/compose.yaml" up --build -d
-python "actividad 2/ejecutar.py"
-docker compose -p actividad2-gameday -f "actividad 2/compose.yaml" down
+docker compose -p actividad2-gameday -f "Actividad 3.2 - Laboratorio Plan de Game Day/compose.yaml" up --build -d
+python "Actividad 3.2 - Laboratorio Plan de Game Day/ejecutar.py"
+docker compose -p actividad2-gameday -f "Actividad 3.2 - Laboratorio Plan de Game Day/compose.yaml" down
 ```
 
 Puertos locales: aplicación 18082, Prometheus 19092. El ensayo puede abortar antes de 60 segundos: diez fallos consecutivos activan la salida de la fase y el bloque `finally` elimina la disciplina de red. Existe un watchdog dentro del contenedor a los 60 s. El rollback manual es:
 
 ```powershell
-docker compose -p actividad2-gameday -f "actividad 2/compose.yaml" exec -T target tc qdisc del dev eth0 root
+docker compose -p actividad2-gameday -f "Actividad 3.2 - Laboratorio Plan de Game Day/compose.yaml" exec -T target tc qdisc del dev eth0 root
 ```
 
 `ejecutar.py` genera evidencia real y sobrescribe los archivos principales de `evidencias`; guardar una copia antes de repetir. La imagen sandbox añade `iproute2` y `NET_ADMIN` exclusivamente para el namespace de red del contenedor. No representa la imagen distroless de producción. Se usa el código y dependencias originales, una réplica, 1 CPU y 256 MiB. No hay base de datos ni dependencia HTTP externa en el servicio original.

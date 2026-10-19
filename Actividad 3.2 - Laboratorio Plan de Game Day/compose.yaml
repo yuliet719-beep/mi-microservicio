@@ -2,7 +2,7 @@ services:
   target:
     build:
       context: ..
-      dockerfile: actividad 2/Dockerfile.sandbox
+      dockerfile: Actividad 3.2 - Laboratorio Plan de Game Day/Dockerfile.sandbox
     cap_add: [NET_ADMIN]
     ports: ["127.0.0.1:18082:8000"]
     cpus: 1.0
