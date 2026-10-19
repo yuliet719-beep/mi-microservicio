@@ -24,7 +24,7 @@ for name, file in [('Arial','arial.ttf'),('Arial-Bold','arialbd.ttf'),('Arial-It
     pdfmetrics.registerFont(TTFont(name,str(fontdir/file)))
 pdfmetrics.registerFontFamily('Arial',normal='Arial',bold='Arial-Bold',italic='Arial-Italic',boldItalic='Arial-BoldItalic')
 fig,ax=plt.subplots(figsize=(9,2.05))
-for phase,label,marker,tone in [('baseline','Referencia','o','.2'),('fault','Fallo','x','0'),('recovery','Recuperación','+','.5')]:
+for phase,label,marker,tone in [('baseline','Referencia','o','#008577'),('fault','Fallo','x','#d85c32'),('recovery','Recuperación','+','#315fba')]:
     d=[r for r in rows if r['phase']==phase]
     ax.scatter([float(r['elapsed_s']) for r in d],[float(r['duration_ms']) for r in d],s=12,label=label,marker=marker,color=tone)
 ax.axhline(200,color='black',linestyle='--',linewidth=.7,label='Umbral: 200 ms')
@@ -62,7 +62,7 @@ def page(): story.append(PageBreak())
 story.append(Spacer(1,66))
 h('Plan de Game Day para evaluar la resiliencia de mi-microservicio')
 story.append(Spacer(1,22))
-for line in ['Manuel Fernando Santofimio Tovar y Beycy Yuliet Rojas','Maestría en Arquitectura de Software, Universidad de La Sabana','EFMAS-OBAP20265: Observabilidad en Ambientes Productivos','Actividad 3.2. Laboratorio Plan de Game Day','Carol Daniela Suarez Mendez','18 de octubre de 2026']:
+for line in ['Manuel Fernando Santofimio Tovar y Beycy Yuliet Rojas','Maestría en Arquitectura de Software, Universidad de La Sabana']:
     story.append(Paragraph(line,center))
 page()
 h('Plan de Game Day para evaluar la resiliencia de mi-microservicio')
@@ -108,10 +108,19 @@ for entry in [
     'yuliet719-beep. (s. f.). <i>mi-microservicio</i> [Código fuente, versión '+R['source_commit'][:12]+']. GitHub. https://github.com/yuliet719-beep/mi-microservicio/tree/'+R['source_commit'],
 ]: story.append(Paragraph(entry,ref))
 
+h('Anexos')
+text('<b>Anexo A. Repositorio y evidencias reproducibles</b>')
+text('Repositorio: <link href="https://github.com/yuliet719-beep/mi-microservicio">https://github.com/yuliet719-beep/mi-microservicio</link>')
+text('Carpeta de entrega: <link href="https://github.com/yuliet719-beep/mi-microservicio/tree/main/Actividad%203.2%20-%20Laboratorio%20Plan%20de%20Game%20Day">Actividad 3.2 - Laboratorio Plan de Game Day</link>. Contiene el informe, los datos originales, la captura de Prometheus y los archivos para repetir el ensayo.')
+text('Archivo complementario: Evidencias_Game_Day.zip. Incluye evidencias, plan previo, código de ejecución, configuración del sandbox y README con la auditoría de los 20 criterios.')
+
 def header(canvas,doc):
     canvas.setFillColor(colors.black)
     canvas.setFont('Arial',11)
     canvas.drawRightString(letter[0]-72,letter[1]-36,str(doc.page))
+    if doc.page == 1:
+        for index,line in enumerate(['EFMAS-OBAP20265: Observabilidad en Ambientes Productivos','Actividad 3.2. Laboratorio Plan de Game Day','Carol Daniela Suarez Mendez','18 de octubre de 2026']):
+            canvas.drawCentredString(letter[0]/2,138-index*22,line)
 pdf=ROOT/'Plan_Game_Day.pdf'
 SimpleDocTemplate(str(pdf),pagesize=letter,leftMargin=72,rightMargin=72,topMargin=72,bottomMargin=72,title='Plan de Game Day para evaluar la resiliencia de mi-microservicio',author='Manuel Fernando Santofimio Tovar; Beycy Yuliet Rojas').build(story,onFirstPage=header,onLaterPages=header)
 doc=pymupdf.open(pdf)

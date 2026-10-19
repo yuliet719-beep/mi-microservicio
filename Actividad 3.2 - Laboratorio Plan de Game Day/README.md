@@ -6,6 +6,8 @@ Entrega solicitada en la carpeta `Actividad 3.2 - Laboratorio Plan de Game Day`.
 
 El PDF aplica APA 7 para trabajo estudiantil: tamaño Carta, márgenes de 2,54 cm, Arial 11, texto a doble espacio, sangría inicial de 1,27 cm, títulos negros, portada y numeración superior derecha. Las tablas usan espacio sencillo, títulos en cursiva y líneas horizontales; las referencias están alfabetizadas y tienen sangría francesa. Incluye citas autor-fecha y figura numerada. Mantiene cinco páginas: portada (1), desarrollo (2-4) y referencias (5). Guía de formato: https://www.apa.org/ed/precollege/psn/2020/09/apa-style-student-papers
 
+Por indicación de los autores, el bloque de curso, actividad, docente y fecha se ubica al pie de la portada. Las figuras conservan el color. El Anexo A en la página 5 enlaza el repositorio y la carpeta de entrega; acompaña al informe el archivo `Evidencias_Game_Day.zip`, con los registros y los archivos necesarios para reproducir el laboratorio.
+
 Para regenerar el PDF se requieren reportlab, matplotlib y pymupdf, además de las fuentes Arial de Windows. En otros sistemas se debe indicar `APA_FONT_DIR` con los cuatro archivos Arial usados por el generador. Las dependencias adicionales solo son necesarias para generar el documento, no para ejecutar el ensayo.
 
 ## Reproducción
