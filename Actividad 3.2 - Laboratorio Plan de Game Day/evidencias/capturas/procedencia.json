@@ -1,0 +1,14 @@
+{
+  "capturado_colombia": "2026-10-18T22:35:46.482569-05:00",
+  "alcance": "Capturas complementarias de funcionamiento normal, posteriores a E1; no son capturas durante el fallo original.",
+  "servicios": {
+    "FastAPI": "http://127.0.0.1:18084/docs",
+    "Prometheus": "http://127.0.0.1:19094/targets",
+    "Grafana": "http://127.0.0.1:23002/d/gameday-evidencia"
+  },
+  "sha256": {
+    "01_fastapi_respuesta_200.jpg": "e819e3f4f3acba5a584ba297f69a1558b4441966874bee0fca5397f3ff33958a",
+    "02_prometheus_objetivo_up.jpg": "f31690e16f2688c3d0e26040f742991f9d489d15b2d0caea4b2e831cb91284a3",
+    "03_grafana_dashboard.jpg": "c5b17ca962586310e7ed7428d71ab2d91c7d18d764ae9b12fa4230dfd2471da1"
+  }
+}

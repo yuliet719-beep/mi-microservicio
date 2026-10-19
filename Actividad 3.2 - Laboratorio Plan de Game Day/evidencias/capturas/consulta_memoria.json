@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "data": {
+    "resultType": "vector",
+    "result": [
+      {
+        "metric": {
+          "__name__": "process_resident_memory_bytes",
+          "instance": "target:8000",
+          "job": "gameday"
+        },
+        "value": [
+          1792380946.077,
+          "49078272"
+        ]
+      }
+    ]
+  }
+}

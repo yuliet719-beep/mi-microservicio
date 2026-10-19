@@ -30,6 +30,44 @@ docker compose -p actividad2-gameday -f "Actividad 3.2 - Laboratorio Plan de Gam
 
 ## Evidencias y alcance
 
+### Evidencia fotográfica de las plataformas en funcionamiento
+
+Capturas reales de navegador del 18/10/2026, en una instancia Docker aislada del mismo código FastAPI. Son una comprobación complementaria de **funcionamiento normal posterior a E1**, no una nueva ejecución del fallo ni capturas retrospectivas del ensayo original. Los resultados de E1 y el PDF final enviado a Moodle se mantienen intactos. El informe ya presenta la figura y los resultados exigidos; estas capturas se consultan como anexos en GitHub para conservar las cinco páginas.
+
+| Plataforma | Evidencia observable |
+|---|---|
+| FastAPI / Swagger UI | Ejecución real de `GET /hello`: estado HTTP 200 y cuerpo `Hello from Kubernetes!`. Ese texto es el mensaje fijo del código; el entorno de esta captura es Docker Compose. |
+| Prometheus | Objetivo `target:8000/metrics`, trabajo `gameday`, en estado **UP** y sin error de recolección. |
+| Grafana | Tablero conectado a Prometheus: disponibilidad `1`, memoria, CPU y tráfico de `/hello` bajo carga sintética. |
+
+**FastAPI: respuesta real del servicio.**
+
+![FastAPI: respuesta HTTP 200 de GET /hello](evidencias/capturas/01_fastapi_respuesta_200.jpg)
+
+**Prometheus: recolección activa del objetivo.**
+
+![Prometheus: objetivo gameday en estado UP](evidencias/capturas/02_prometheus_objetivo_up.jpg)
+
+**Grafana: métricas y tráfico del servicio.**
+
+![Grafana: disponibilidad, memoria, CPU y solicitudes por segundo](evidencias/capturas/03_grafana_dashboard.jpg)
+
+`evidencias/capturas/procedencia.json` registra fecha, direcciones y hashes SHA-256. Las consultas `consulta_*.json`, `grafana_salud.json`, `contenedores.jsonl` y `carga_funcionamiento.json` permiten contrastar las capturas con los datos del servicio. La carga complementaria realiza 500 solicitudes a intervalos nominales de 200 ms; su tasa efectiva depende de la duración de las respuestas. No se sustituyen ni mezclan las muestras de `evidencias/solicitudes.csv`.
+
+Para reproducir esta vista desde la raíz del repositorio:
+
+```powershell
+docker compose -p gameday-capturas -f "Actividad 3.2 - Laboratorio Plan de Game Day/compose.capturas.yaml" up --build -d
+```
+
+Abrir FastAPI en `http://127.0.0.1:18084/docs`, Prometheus en `http://127.0.0.1:19094/targets` y Grafana en `http://127.0.0.1:23002/d/gameday-evidencia`. Generar solicitudes a `/hello` para poblar el panel. Grafana permite lectura anónima únicamente en este stack local, enlazado a loopback. Al terminar:
+
+```powershell
+docker compose -p gameday-capturas -f "Actividad 3.2 - Laboratorio Plan de Game Day/compose.capturas.yaml" down
+```
+
+### Archivos del experimento original
+
 - `plan_previo.json`: hipótesis, umbrales y parada definidos antes de ejecutar.
 - `evidencias/resultados.json`: resumen calculado y commit base.
 - `evidencias/solicitudes.csv`: cada solicitud, estado, duración y un identificador de span cliente.

@@ -1,0 +1,22 @@
+{
+  "status": "success",
+  "data": {
+    "resultType": "vector",
+    "result": [
+      {
+        "metric": {
+          "__name__": "http_requests_total",
+          "handler": "/hello",
+          "instance": "target:8000",
+          "job": "gameday",
+          "method": "GET",
+          "status": "2xx"
+        },
+        "value": [
+          1792380946.075,
+          "402"
+        ]
+      }
+    ]
+  }
+}

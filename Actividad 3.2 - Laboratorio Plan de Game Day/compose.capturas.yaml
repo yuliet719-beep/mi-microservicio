@@ -1,0 +1,23 @@
+# Stack complementario de evidencias visuales; no reejecuta ni altera el ensayo E1.
+services:
+  target:
+    build:
+      context: ..
+      dockerfile: Actividad 3.2 - Laboratorio Plan de Game Day/Dockerfile.sandbox
+    ports: ["127.0.0.1:18084:8000"]
+    cpus: 1.0
+    mem_limit: 256m
+  prometheus:
+    image: prom/prometheus:v2.54.1
+    ports: ["127.0.0.1:19094:9090"]
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+  grafana:
+    image: grafana/grafana:11.2.0
+    ports: ["127.0.0.1:23002:3000"]
+    environment:
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+      GF_AUTH_ANONYMOUS_ORG_ROLE: Viewer
+      GF_USERS_ALLOW_SIGN_UP: "false"
+    volumes:
+      - ./capturas/grafana:/etc/grafana/provisioning:ro
