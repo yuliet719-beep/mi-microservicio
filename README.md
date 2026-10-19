@@ -1,5 +1,13 @@
 # mi-microservicio
 
+## Observabilidad - Actividad 3.3
+
+La entrega del laboratorio integrador está en [actividad 3](actividad%203/README.md):
+tres microservicios con OpenTelemetry, PostgreSQL, Envoy, stack de telemetría,
+AIOps local, dos experimentos de caos con evidencias reales, video e informe de diez páginas.
+**El despliegue en GCP/AWS permanece pendiente; la entrega no acredita el 100% cloud.**
+La matriz de requisitos y las brechas se documentan en esa carpeta.
+
 Entrega de la actividad 3: microservicio FastAPI con integración continua, entrega continua y despliegue declarativo en Kubernetes usando GitHub Actions, Jenkins, Docker, Helm y Argo CD.
 
 ## Objetivo de la entrega

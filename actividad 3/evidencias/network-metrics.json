@@ -1,0 +1,56 @@
+{
+  "status": "success",
+  "data": {
+    "resultType": "vector",
+    "result": [
+      {
+        "metric": {
+          "__name__": "envoy_http_downstream_rq_total",
+          "envoy_http_conn_manager_prefix": "admin",
+          "instance": "mesh-data:9901",
+          "job": "envoy"
+        },
+        "value": [
+          1792381679.191,
+          "435"
+        ]
+      },
+      {
+        "metric": {
+          "__name__": "envoy_http_downstream_rq_total",
+          "envoy_http_conn_manager_prefix": "east_west",
+          "instance": "mesh-data:9901",
+          "job": "envoy"
+        },
+        "value": [
+          1792381679.191,
+          "21966"
+        ]
+      },
+      {
+        "metric": {
+          "__name__": "envoy_http_downstream_rq_total",
+          "envoy_http_conn_manager_prefix": "admin",
+          "instance": "mesh-b:9901",
+          "job": "envoy"
+        },
+        "value": [
+          1792381679.191,
+          "434"
+        ]
+      },
+      {
+        "metric": {
+          "__name__": "envoy_http_downstream_rq_total",
+          "envoy_http_conn_manager_prefix": "east_west",
+          "instance": "mesh-b:9901",
+          "job": "envoy"
+        },
+        "value": [
+          1792381679.191,
+          "8129"
+        ]
+      }
+    ]
+  }
+}

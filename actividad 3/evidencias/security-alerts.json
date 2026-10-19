@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "data": {
+    "alerts": [
+      {
+        "labels": {
+          "alertname": "AuthFailures",
+          "severity": "warning"
+        },
+        "annotations": {
+          "summary": "Sandbox authentication failure burst"
+        },
+        "state": "firing",
+        "activeAt": "2026-10-19T03:48:37.025090054Z",
+        "value": "1.0446443453443951e+01"
+      }
+    ]
+  }
+}

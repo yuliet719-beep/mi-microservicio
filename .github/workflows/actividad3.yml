@@ -1,0 +1,63 @@
+name: Actividad 3 - Sandbox de observabilidad
+on:
+  push:
+    branches: [main]
+    paths: ['actividad 3/**', '.github/workflows/actividad3.yml']
+  pull_request:
+    paths: ['actividad 3/**', '.github/workflows/actividad3.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  sandbox:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: actividad 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Preparar secretos efimeros y validar Compose
+        run: |
+          python scripts/init_env.py
+          python scripts/build_config.py
+          docker compose config --quiet
+      - name: Construir e iniciar sandbox
+        run: docker compose up -d --build
+      - name: Probar correlacion y configuraciones
+        run: |
+          docker run --rm --network none -v "$PWD/tests:/lab/tests:ro" actividad3-observabilidad:local python -m unittest discover -s tests -v
+          docker compose exec -T prometheus promtool check rules /etc/prometheus/rules.yaml
+          docker compose exec -T collector /otelcol-contrib validate --config=/etc/otel.yaml
+      - name: Ejecutar ambos experimentos y verificar evidencias
+        run: |
+          python scripts/experiment.py
+          python scripts/verify.py
+      - name: Conservar datos de esta ejecucion CI
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: actividad3-evidencias-ci
+          path: actividad 3/evidencias/
+      - name: Detener sandbox
+        if: always()
+        run: docker compose down
+  terraform:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        cloud: [aws, gcp]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: '1.10.5'
+      - name: Validar IaC sin aplicar recursos
+        working-directory: actividad 3/iac/${{ matrix.cloud }}
+        run: |
+          terraform fmt -check
+          terraform init -backend=false -input=false
+          terraform validate

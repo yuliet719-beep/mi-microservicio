@@ -1,0 +1,8 @@
+test_needs_both_signals (test_detector.CorrelationTests.test_needs_both_signals) ... ok
+test_strict_boundary (test_detector.CorrelationTests.test_strict_boundary) ... ok
+test_zero_variance_and_no_errors (test_detector.CorrelationTests.test_zero_variance_and_no_errors) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
+
+OK

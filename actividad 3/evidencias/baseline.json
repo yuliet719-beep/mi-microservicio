@@ -1,0 +1,7 @@
+{
+  "mean": 0.0,
+  "sigma": 0.0,
+  "windows": 12,
+  "threshold": 0.0,
+  "samples_per_window": 30
+}

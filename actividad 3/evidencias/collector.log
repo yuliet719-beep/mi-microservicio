@@ -1,0 +1,7 @@
+collector-1  | 2026-10-19T03:44:09.228Z	info	service@v0.117.0/service.go:164	Setting up own telemetry...
+collector-1  | 2026-10-19T03:44:09.228Z	info	telemetry/metrics.go:70	Serving metrics	{"address": "localhost:8888", "metrics level": "Normal"}
+collector-1  | 2026-10-19T03:44:09.228Z	info	memorylimiter@v0.117.0/memorylimiter.go:75	Memory limiter configured	{"kind": "processor", "name": "memory_limiter", "pipeline": "traces", "limit_mib": 256, "spike_limit_mib": 51, "check_interval": 1}
+collector-1  | 2026-10-19T03:44:09.229Z	info	service@v0.117.0/service.go:230	Starting otelcol-contrib...	{"Version": "0.117.0", "NumCPU": 32}
+collector-1  | 2026-10-19T03:44:09.229Z	info	extensions/extensions.go:39	Starting extensions...
+collector-1  | 2026-10-19T03:44:09.262Z	info	otlpreceiver@v0.117.0/otlp.go:169	Starting HTTP server	{"kind": "receiver", "name": "otlp", "data_type": "traces", "endpoint": "0.0.0.0:4318"}
+collector-1  | 2026-10-19T03:44:09.273Z	info	service@v0.117.0/service.go:253	Everything is ready. Begin running and processing data.

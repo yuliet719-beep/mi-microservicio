@@ -1,0 +1,3 @@
+Checking /etc/prometheus/rules.yaml
+  SUCCESS: 4 rules found
+

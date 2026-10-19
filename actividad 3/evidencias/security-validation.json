@@ -1,0 +1,19 @@
+{
+  "utc": "2026-10-19T03:48:33.621011+00:00",
+  "repeat_burst": 10,
+  "total_attempts_this_session": 20,
+  "http_codes": [
+    401,
+    401,
+    401,
+    401,
+    401,
+    401,
+    401,
+    401,
+    401,
+    401
+  ],
+  "reason": "First burst created the counter; second burst validates increase() against existing samples",
+  "alert_firing": true
+}

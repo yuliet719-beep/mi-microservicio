@@ -1,0 +1,13 @@
+{
+  "two_automatic_alerts_under_120s": true,
+  "recovery_no_errors": true,
+  "noise_reduction_measured": true,
+  "trace_three_services": true,
+  "trace_real_sql": true,
+  "logs_persisted_loki": true,
+  "logs_trace_correlation": true,
+  "metrics_three_services": true,
+  "envoy_l7_metrics": true,
+  "authentication_alert_firing": true,
+  "chaos_requires_operator_token": true
+}

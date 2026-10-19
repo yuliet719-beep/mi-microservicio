@@ -1,0 +1,16 @@
+{
+  "labels": {
+    "alertname": "CorrelatedDataServiceAnomaly",
+    "environment": "sandbox",
+    "instance": "aiops:8000",
+    "job": "aiops",
+    "severity": "critical"
+  },
+  "annotations": {
+    "runbook": "See docs/RUNBOOK.md and aiops /alerts for trace_id",
+    "summary": "Error rate above baseline + 2 sigma AND p99 above SLO"
+  },
+  "state": "firing",
+  "activeAt": "2026-10-19T03:46:39.025090054Z",
+  "value": "1e+00"
+}

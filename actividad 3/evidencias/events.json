@@ -1,0 +1,85 @@
+[
+  {
+    "event": "preflight",
+    "epoch": 1792381450.867025,
+    "utc": "2026-10-19T03:44:10.867024+00:00"
+  },
+  {
+    "event": "baseline_ready",
+    "epoch": 1792381475.348429,
+    "utc": "2026-10-19T03:44:35.348429+00:00"
+  },
+  {
+    "event": "noise_start",
+    "epoch": 1792381495.453877,
+    "utc": "2026-10-19T03:44:55.453877+00:00",
+    "error_rate": 0.1,
+    "error_delay_ms": 0
+  },
+  {
+    "event": "noise_end",
+    "epoch": 1792381520.5533237,
+    "utc": "2026-10-19T03:45:20.553323+00:00"
+  },
+  {
+    "event": "latency_start",
+    "epoch": 1792381530.57662,
+    "utc": "2026-10-19T03:45:30.576620+00:00",
+    "service": "service-b",
+    "latency_ms": 200
+  },
+  {
+    "event": "alert_firing",
+    "epoch": 1792381539.408358,
+    "utc": "2026-10-19T03:45:39.408358+00:00",
+    "phase": "latency",
+    "alert": "ServiceBLatency",
+    "mttd_s": 8.831737995147705
+  },
+  {
+    "event": "latency_rollback",
+    "epoch": 1792381570.633038,
+    "utc": "2026-10-19T03:46:10.633038+00:00"
+  },
+  {
+    "event": "errors_start",
+    "epoch": 1792381595.6505136,
+    "utc": "2026-10-19T03:46:35.650513+00:00",
+    "service": "data-service",
+    "error_rate": 0.1,
+    "error_delay_ms": 250
+  },
+  {
+    "event": "alert_firing",
+    "epoch": 1792381603.079022,
+    "utc": "2026-10-19T03:46:43.079021+00:00",
+    "phase": "errors",
+    "alert": "CorrelatedDataServiceAnomaly",
+    "mttd_s": 7.428508281707764
+  },
+  {
+    "event": "errors_rollback",
+    "epoch": 1792381640.7591548,
+    "utc": "2026-10-19T03:47:20.759154+00:00"
+  },
+  {
+    "event": "auth_probe",
+    "epoch": 1792381671.0830495,
+    "utc": "2026-10-19T03:47:51.083049+00:00",
+    "failed_attempts": 10
+  },
+  {
+    "event": "rollback_finally",
+    "epoch": 1792381679.1251264,
+    "utc": "2026-10-19T03:47:59.125126+00:00"
+  },
+  {
+    "event": "finished",
+    "epoch": 1792381680.5136912,
+    "utc": "2026-10-19T03:48:00.513691+00:00",
+    "mttd_s": {
+      "latency": 8.831737995147705,
+      "errors": 7.428508281707764
+    }
+  }
+]

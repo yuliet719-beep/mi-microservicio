@@ -1,0 +1,12 @@
+aiops | running | Up 3 minutes
+collector | running | Up 3 minutes
+data-service | running | Up 4 minutes
+database | running | Up 15 minutes (healthy)
+grafana | running | Up 14 minutes
+loki | running | Up 14 minutes
+mesh-b | running | Up 14 minutes
+mesh-data | running | Up 14 minutes
+prometheus | running | Up 3 minutes
+service-a | running | Up 3 minutes
+service-b | running | Up 3 minutes
+tempo | running | Up 14 minutes

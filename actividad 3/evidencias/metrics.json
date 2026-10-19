@@ -1,0 +1,148 @@
+{
+  "status": "success",
+  "data": {
+    "resultType": "vector",
+    "result": [
+      {
+        "metric": {
+          "__name__": "lab_requests_total",
+          "cloud_provider": "local",
+          "deployment_environment_name": "sandbox",
+          "exported_job": "data-service",
+          "instance": "collector:8889",
+          "job": "otel",
+          "service": "data-service",
+          "service_name": "data-service",
+          "status": "200",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.29.0"
+        },
+        "value": [
+          1792381679.188,
+          "7367"
+        ]
+      },
+      {
+        "metric": {
+          "__name__": "lab_requests_total",
+          "cloud_provider": "local",
+          "deployment_environment_name": "sandbox",
+          "exported_job": "service-a",
+          "instance": "collector:8889",
+          "job": "otel",
+          "service": "service-a",
+          "service_name": "service-a",
+          "status": "200",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.29.0"
+        },
+        "value": [
+          1792381679.188,
+          "3872"
+        ]
+      },
+      {
+        "metric": {
+          "__name__": "lab_requests_total",
+          "cloud_provider": "local",
+          "deployment_environment_name": "sandbox",
+          "exported_job": "service-b",
+          "instance": "collector:8889",
+          "job": "otel",
+          "service": "service-b",
+          "service_name": "service-b",
+          "status": "200",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.29.0"
+        },
+        "value": [
+          1792381679.188,
+          "3872"
+        ]
+      },
+      {
+        "metric": {
+          "__name__": "lab_requests_total",
+          "cloud_provider": "local",
+          "deployment_environment_name": "sandbox",
+          "exported_job": "data-service",
+          "instance": "collector:8889",
+          "job": "otel",
+          "service": "data-service",
+          "service_name": "data-service",
+          "status": "503",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.29.0"
+        },
+        "value": [
+          1792381679.188,
+          "240"
+        ]
+      },
+      {
+        "metric": {
+          "__name__": "lab_requests_total",
+          "cloud_provider": "local",
+          "deployment_environment_name": "sandbox",
+          "exported_job": "service-a",
+          "instance": "collector:8889",
+          "job": "otel",
+          "service": "service-a",
+          "service_name": "service-a",
+          "status": "503",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.29.0"
+        },
+        "value": [
+          1792381679.188,
+          "136"
+        ]
+      },
+      {
+        "metric": {
+          "__name__": "lab_requests_total",
+          "cloud_provider": "local",
+          "deployment_environment_name": "sandbox",
+          "exported_job": "service-b",
+          "instance": "collector:8889",
+          "job": "otel",
+          "service": "service-b",
+          "service_name": "service-b",
+          "status": "503",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.29.0"
+        },
+        "value": [
+          1792381679.188,
+          "136"
+        ]
+      },
+      {
+        "metric": {
+          "__name__": "lab_requests_total",
+          "cloud_provider": "local",
+          "deployment_environment_name": "sandbox",
+          "exported_job": "service-a",
+          "instance": "collector:8889",
+          "job": "otel",
+          "service": "service-a",
+          "service_name": "service-a",
+          "status": "401",
+          "telemetry_sdk_language": "python",
+          "telemetry_sdk_name": "opentelemetry",
+          "telemetry_sdk_version": "1.29.0"
+        },
+        "value": [
+          1792381679.188,
+          "10"
+        ]
+      }
+    ]
+  }
+}

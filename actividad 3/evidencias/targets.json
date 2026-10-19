@@ -1,0 +1,105 @@
+{
+  "status": "success",
+  "data": {
+    "activeTargets": [
+      {
+        "discoveredLabels": {
+          "__address__": "aiops:8000",
+          "__metrics_path__": "/metrics",
+          "__scheme__": "http",
+          "__scrape_interval__": "2s",
+          "__scrape_timeout__": "2s",
+          "job": "aiops"
+        },
+        "labels": {
+          "instance": "aiops:8000",
+          "job": "aiops"
+        },
+        "scrapePool": "aiops",
+        "scrapeUrl": "http://aiops:8000/metrics",
+        "globalUrl": "http://aiops:8000/metrics",
+        "lastError": "",
+        "lastScrape": "2026-10-19T03:47:58.986333927Z",
+        "lastScrapeDuration": 0.001169277,
+        "health": "up",
+        "scrapeInterval": "2s",
+        "scrapeTimeout": "2s"
+      },
+      {
+        "discoveredLabels": {
+          "__address__": "mesh-b:9901",
+          "__metrics_path__": "/stats/prometheus",
+          "__scheme__": "http",
+          "__scrape_interval__": "2s",
+          "__scrape_timeout__": "2s",
+          "job": "envoy"
+        },
+        "labels": {
+          "instance": "mesh-b:9901",
+          "job": "envoy"
+        },
+        "scrapePool": "envoy",
+        "scrapeUrl": "http://mesh-b:9901/stats/prometheus",
+        "globalUrl": "http://mesh-b:9901/stats/prometheus",
+        "lastError": "",
+        "lastScrape": "2026-10-19T03:47:57.777953757Z",
+        "lastScrapeDuration": 0.001640467,
+        "health": "up",
+        "scrapeInterval": "2s",
+        "scrapeTimeout": "2s"
+      },
+      {
+        "discoveredLabels": {
+          "__address__": "mesh-data:9901",
+          "__metrics_path__": "/stats/prometheus",
+          "__scheme__": "http",
+          "__scrape_interval__": "2s",
+          "__scrape_timeout__": "2s",
+          "job": "envoy"
+        },
+        "labels": {
+          "instance": "mesh-data:9901",
+          "job": "envoy"
+        },
+        "scrapePool": "envoy",
+        "scrapeUrl": "http://mesh-data:9901/stats/prometheus",
+        "globalUrl": "http://mesh-data:9901/stats/prometheus",
+        "lastError": "",
+        "lastScrape": "2026-10-19T03:47:57.648477663Z",
+        "lastScrapeDuration": 0.001627193,
+        "health": "up",
+        "scrapeInterval": "2s",
+        "scrapeTimeout": "2s"
+      },
+      {
+        "discoveredLabels": {
+          "__address__": "collector:8889",
+          "__metrics_path__": "/metrics",
+          "__scheme__": "http",
+          "__scrape_interval__": "2s",
+          "__scrape_timeout__": "2s",
+          "job": "otel"
+        },
+        "labels": {
+          "instance": "collector:8889",
+          "job": "otel"
+        },
+        "scrapePool": "otel",
+        "scrapeUrl": "http://collector:8889/metrics",
+        "globalUrl": "http://collector:8889/metrics",
+        "lastError": "",
+        "lastScrape": "2026-10-19T03:47:58.152661217Z",
+        "lastScrapeDuration": 0.002020266,
+        "health": "up",
+        "scrapeInterval": "2s",
+        "scrapeTimeout": "2s"
+      }
+    ],
+    "droppedTargets": [],
+    "droppedTargetCounts": {
+      "aiops": 0,
+      "envoy": 0,
+      "otel": 0
+    }
+  }
+}

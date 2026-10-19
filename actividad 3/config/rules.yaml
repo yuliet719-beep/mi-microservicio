@@ -1,0 +1,24 @@
+groups:
+  - name: sandbox
+    rules:
+      - alert: CorrelatedDataServiceAnomaly
+        expr: aiops_correlated_anomaly == 1
+        for: 2s
+        labels: {severity: critical, environment: sandbox}
+        annotations:
+          summary: Error rate above baseline + 2 sigma AND p99 above SLO
+          runbook: See docs/RUNBOOK.md and aiops /alerts for trace_id
+      - alert: ServiceBLatency
+        expr: histogram_quantile(0.99, sum by (le) (rate(lab_duration_seconds_bucket{service="service-b"}[20s]))) > 0.2
+        for: 2s
+        labels: {severity: warning, environment: sandbox}
+        annotations:
+          summary: Service B p99 exceeds 200 ms
+      - alert: AuthFailures
+        expr: sum(increase(lab_auth_failures_total[1m])) > 5
+        labels: {severity: warning}
+        annotations: {summary: Sandbox authentication failure burst}
+      - alert: EastWestTrafficAnomaly
+        expr: sum(rate(envoy_http_downstream_rq_total[20s])) > 100
+        for: 10s
+        annotations: {summary: East-West request rate above sandbox capacity envelope}

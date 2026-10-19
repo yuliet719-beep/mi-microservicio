@@ -1,0 +1,12 @@
+.env
+__pycache__/
+*.pyc
+tmp/
+*.tfstate*
+.terraform/
+*.tfvars
+!*.tfvars.example
+evidencias/video-frames/
+evidencias/video-frames-final/
+tmp-*.log
+experiment-run.log

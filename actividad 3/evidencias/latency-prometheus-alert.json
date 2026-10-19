@@ -1,0 +1,13 @@
+{
+  "labels": {
+    "alertname": "ServiceBLatency",
+    "environment": "sandbox",
+    "severity": "warning"
+  },
+  "annotations": {
+    "summary": "Service B p99 exceeds 200 ms"
+  },
+  "state": "firing",
+  "activeAt": "2026-10-19T03:45:35.025090054Z",
+  "value": "2.4444444444444446e-01"
+}

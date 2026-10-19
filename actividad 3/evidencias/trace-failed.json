@@ -1,0 +1,191 @@
+{
+  "batches": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "telemetry.sdk.language",
+            "value": {
+              "stringValue": "python"
+            }
+          },
+          {
+            "key": "telemetry.sdk.name",
+            "value": {
+              "stringValue": "opentelemetry"
+            }
+          },
+          {
+            "key": "telemetry.sdk.version",
+            "value": {
+              "stringValue": "1.29.0"
+            }
+          },
+          {
+            "key": "deployment.environment.name",
+            "value": {
+              "stringValue": "sandbox"
+            }
+          },
+          {
+            "key": "cloud.provider",
+            "value": {
+              "stringValue": "local"
+            }
+          },
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "data-service"
+            }
+          }
+        ]
+      },
+      "scopeSpans": [
+        {
+          "scope": {
+            "name": "opentelemetry.instrumentation.fastapi",
+            "version": "0.50b0"
+          },
+          "spans": [
+            {
+              "traceId": "prrOdo2qCaMIppvjmohljg==",
+              "spanId": "PhcfXwIIQi8=",
+              "parentSpanId": "Ok/KA7ikMLY=",
+              "name": "GET /work http send",
+              "kind": "SPAN_KIND_INTERNAL",
+              "startTimeUnixNano": "1792381640113074637",
+              "endTimeUnixNano": "1792381640113109693",
+              "attributes": [
+                {
+                  "key": "asgi.event.type",
+                  "value": {
+                    "stringValue": "http.response.start"
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "intValue": "503"
+                  }
+                }
+              ],
+              "status": {
+                "code": "STATUS_CODE_ERROR"
+              }
+            },
+            {
+              "traceId": "prrOdo2qCaMIppvjmohljg==",
+              "spanId": "0F8+3g1tjok=",
+              "parentSpanId": "Ok/KA7ikMLY=",
+              "name": "GET /work http send",
+              "kind": "SPAN_KIND_INTERNAL",
+              "startTimeUnixNano": "1792381640113203487",
+              "endTimeUnixNano": "1792381640113212660",
+              "attributes": [
+                {
+                  "key": "asgi.event.type",
+                  "value": {
+                    "stringValue": "http.response.body"
+                  }
+                }
+              ],
+              "status": {}
+            },
+            {
+              "traceId": "prrOdo2qCaMIppvjmohljg==",
+              "spanId": "Ok/KA7ikMLY=",
+              "name": "GET /work",
+              "kind": "SPAN_KIND_SERVER",
+              "startTimeUnixNano": "1792381639861748858",
+              "endTimeUnixNano": "1792381640113590869",
+              "attributes": [
+                {
+                  "key": "http.scheme",
+                  "value": {
+                    "stringValue": "http"
+                  }
+                },
+                {
+                  "key": "http.host",
+                  "value": {
+                    "stringValue": "172.31.0.9:8000"
+                  }
+                },
+                {
+                  "key": "net.host.port",
+                  "value": {
+                    "intValue": "8000"
+                  }
+                },
+                {
+                  "key": "http.flavor",
+                  "value": {
+                    "stringValue": "1.1"
+                  }
+                },
+                {
+                  "key": "http.target",
+                  "value": {
+                    "stringValue": "/work"
+                  }
+                },
+                {
+                  "key": "http.server_name",
+                  "value": {
+                    "stringValue": "mesh-data:8080"
+                  }
+                },
+                {
+                  "key": "http.user_agent",
+                  "value": {
+                    "stringValue": "python-httpx/0.28.1"
+                  }
+                },
+                {
+                  "key": "net.peer.ip",
+                  "value": {
+                    "stringValue": "172.31.0.7"
+                  }
+                },
+                {
+                  "key": "net.peer.port",
+                  "value": {
+                    "intValue": "43934"
+                  }
+                },
+                {
+                  "key": "http.route",
+                  "value": {
+                    "stringValue": "/work"
+                  }
+                },
+                {
+                  "key": "http.method",
+                  "value": {
+                    "stringValue": "GET"
+                  }
+                },
+                {
+                  "key": "http.url",
+                  "value": {
+                    "stringValue": "http://172.31.0.9:8000/work"
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "intValue": "503"
+                  }
+                }
+              ],
+              "status": {
+                "code": "STATUS_CODE_ERROR"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

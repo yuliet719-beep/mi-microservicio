@@ -1,0 +1,120 @@
+name: actividad3-observabilidad
+x-app: &app
+  build: .
+  image: actividad3-observabilidad:local
+  restart: unless-stopped
+  mem_limit: 256m
+  cpus: 1
+  read_only: true
+  tmpfs: [/tmp]
+  cap_drop: [ALL]
+  security_opt: [no-new-privileges:true]
+  networks: [sandbox]
+x-env: &env
+  OTEL_EXPORTER_OTLP_ENDPOINT: http://collector:4318
+  CONTROL_TOKEN: ${CONTROL_TOKEN:?Run scripts/init_env.py first}
+services:
+  volume-init:
+    image: python:3.12-slim
+    user: '0'
+    command: ['python', '-c', 'import os; os.chown("/tempo",10001,10001); os.chown("/loki",10001,10001)']
+    volumes: ['tempo:/tempo', 'loki:/loki']
+    network_mode: none
+  service-a:
+    <<: *app
+    environment:
+      <<: *env
+      SERVICE_NAME: service-a
+      DOWNSTREAM_URL: http://mesh-b:8080
+    ports: ['127.0.0.1:18080:8000']
+    depends_on: [mesh-b, collector]
+  service-b:
+    <<: *app
+    environment:
+      <<: *env
+      SERVICE_NAME: service-b
+      DOWNSTREAM_URL: http://mesh-data:8080
+    ports: ['127.0.0.1:18081:8000']
+    depends_on: [mesh-data, collector]
+  data-service:
+    <<: *app
+    environment:
+      <<: *env
+      SERVICE_NAME: data-service
+      DATABASE_URL: postgresql://lab:${DB_PASSWORD:?Run init_env.py}@database:5432/observability
+    ports: ['127.0.0.1:18082:8000']
+    depends_on:
+      database: {condition: service_healthy}
+      collector: {condition: service_started}
+  database:
+    image: postgres:16-bookworm
+    environment:
+      POSTGRES_USER: lab
+      POSTGRES_DB: observability
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes: ['./config/init.sql:/docker-entrypoint-initdb.d/init.sql:ro', 'database:/var/lib/postgresql/data']
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U lab -d observability']
+      interval: 2s
+      retries: 30
+    networks: [sandbox]
+  mesh-b:
+    image: envoyproxy/envoy:v1.32.3
+    command: ['envoy', '-c', '/etc/envoy/envoy.yaml', '--log-level', 'warning']
+    volumes: ['./config/envoy-b.yaml:/etc/envoy/envoy.yaml:ro']
+    depends_on: [service-b]
+    networks: [sandbox]
+  mesh-data:
+    image: envoyproxy/envoy:v1.32.3
+    command: ['envoy', '-c', '/etc/envoy/envoy.yaml', '--log-level', 'warning']
+    volumes: ['./config/envoy-data.yaml:/etc/envoy/envoy.yaml:ro']
+    depends_on: [data-service]
+    networks: [sandbox]
+  collector:
+    image: otel/opentelemetry-collector-contrib:0.117.0
+    command: ['--config=/etc/otel.yaml']
+    volumes: ['./config/collector.yaml:/etc/otel.yaml:ro']
+    depends_on: [tempo, loki]
+    networks: [sandbox]
+  tempo:
+    image: grafana/tempo:2.6.1
+    command: ['-config.file=/etc/tempo.yaml']
+    volumes: ['./config/tempo.yaml:/etc/tempo.yaml:ro', 'tempo:/tmp/tempo']
+    ports: ['127.0.0.1:13200:3200']
+    networks: [sandbox]
+    depends_on:
+      volume-init: {condition: service_completed_successfully}
+  loki:
+    image: grafana/loki:3.3.2
+    command: ['-config.file=/etc/loki.yaml']
+    volumes: ['./config/loki.yaml:/etc/loki.yaml:ro', 'loki:/tmp/loki']
+    ports: ['127.0.0.1:13100:3100']
+    networks: [sandbox]
+    depends_on:
+      volume-init: {condition: service_completed_successfully}
+  prometheus:
+    image: prom/prometheus:v2.54.1
+    volumes: ['./config/prometheus.yaml:/etc/prometheus/prometheus.yml:ro', './config/rules.yaml:/etc/prometheus/rules.yaml:ro']
+    ports: ['127.0.0.1:19090:9090']
+    networks: [sandbox]
+  grafana:
+    image: grafana/grafana:11.4.0
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_PASSWORD:?Run init_env.py}
+      GF_AUTH_ANONYMOUS_ENABLED: 'true'
+      GF_AUTH_ANONYMOUS_ORG_ROLE: Viewer
+    volumes: ['./config/grafana:/etc/grafana/provisioning:ro']
+    ports: ['127.0.0.1:23000:3000']
+    networks: [sandbox]
+  aiops:
+    <<: *app
+    command: ['uvicorn', 'src.aiops:app', '--host', '0.0.0.0', '--port', '8000', '--no-access-log']
+    ports: ['127.0.0.1:18083:8000']
+    depends_on: [mesh-data]
+networks:
+  sandbox:
+    name: actividad3-sandbox
+volumes:
+  database:
+  tempo:
+  loki:

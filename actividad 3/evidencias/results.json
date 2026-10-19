@@ -1,0 +1,97 @@
+{
+  "scope": "local Docker sandbox; no GCP/AWS deployment",
+  "mttd_s": {
+    "latency": 8.831737995147705,
+    "errors": 7.428508281707764
+  },
+  "phases": {
+    "baseline": {
+      "requests": 512,
+      "errors": 0,
+      "error_rate": 0.0,
+      "p99_s": 0.061203718185424805,
+      "good": 512,
+      "bad": 0,
+      "sli": 1.0,
+      "budget_allowed_requests_99pct": 5.12,
+      "budget_consumed_multiple": 0.0
+    },
+    "noise": {
+      "requests": 648,
+      "errors": 63,
+      "error_rate": 0.09722222222222222,
+      "p99_s": 0.050943851470947266,
+      "good": 585,
+      "bad": 63,
+      "sli": 0.9027777777777778,
+      "budget_allowed_requests_99pct": 6.48,
+      "budget_consumed_multiple": 9.722222222222221
+    },
+    "noise_recovery": {
+      "requests": 252,
+      "errors": 0,
+      "error_rate": 0.0,
+      "p99_s": 0.05536627769470215,
+      "good": 252,
+      "bad": 0,
+      "sli": 1.0,
+      "budget_allowed_requests_99pct": 2.52,
+      "budget_consumed_multiple": 0.0
+    },
+    "latency": {
+      "requests": 440,
+      "errors": 0,
+      "error_rate": 0.0,
+      "p99_s": 0.25725579261779785,
+      "good": 1,
+      "bad": 439,
+      "sli": 0.002272727272727315,
+      "budget_allowed_requests_99pct": 4.4,
+      "budget_consumed_multiple": 99.77272727272727
+    },
+    "latency_recovery": {
+      "requests": 632,
+      "errors": 0,
+      "error_rate": 0.0,
+      "p99_s": 0.058403968811035156,
+      "good": 632,
+      "bad": 0,
+      "sli": 1.0,
+      "budget_allowed_requests_99pct": 6.32,
+      "budget_consumed_multiple": 0.0
+    },
+    "errors": {
+      "requests": 764,
+      "errors": 73,
+      "error_rate": 0.09554973821989529,
+      "p99_s": 0.27979397773742676,
+      "good": 691,
+      "bad": 73,
+      "sli": 0.9044502617801047,
+      "budget_allowed_requests_99pct": 7.640000000000001,
+      "budget_consumed_multiple": 9.554973821989527
+    },
+    "recovery": {
+      "requests": 760,
+      "errors": 0,
+      "error_rate": 0.0,
+      "p99_s": 0.05675506591796875,
+      "good": 760,
+      "bad": 0,
+      "sli": 1.0,
+      "budget_allowed_requests_99pct": 7.6000000000000005,
+      "budget_consumed_multiple": 0.0
+    }
+  },
+  "noise_comparison": {
+    "windows": 12,
+    "static": 12,
+    "correlated": 0,
+    "reduction": 1.0
+  },
+  "slo": {
+    "target": 0.99,
+    "latency_threshold_s": 0.2,
+    "window": "each experimental phase; not a monthly SLO"
+  }
+}

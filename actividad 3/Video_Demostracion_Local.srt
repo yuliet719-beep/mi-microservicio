@@ -1,0 +1,19 @@
+1
+00:00:00,000 --> 00:00:15,778
+Grafana: trafico y tres pilares instrumentados | Sandbox local; GCP/AWS pendientes.
+
+2
+00:00:15,778 --> 00:00:28,226
+Prometheus: alerta automatica de latencia service-b | Sandbox local; GCP/AWS pendientes.
+
+3
+00:00:28,226 --> 00:00:40,805
+Prometheus: error rate y p99 correlacionados automaticamente | Sandbox local; GCP/AWS pendientes.
+
+4
+00:00:40,805 --> 00:00:49,088
+Alerta enriquecida: trace_id, baseline, p99 y runbook | Sandbox local; GCP/AWS pendientes.
+
+5
+00:00:49,088 --> 00:00:59,403
+Recuperacion: caos resuelto y alerta por autenticacion fallida | Sandbox local; GCP/AWS pendientes.

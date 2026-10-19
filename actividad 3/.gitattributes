@@ -1,0 +1,6 @@
+* text eol=lf
+*.pdf binary
+*.mp4 binary
+*.jpg binary
+*.png binary
+evidencias/** -text whitespace=-blank-at-eol,-blank-at-eof
