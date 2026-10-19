@@ -1,0 +1,13 @@
+{
+  "experiment": "E1-latencia-egress",
+  "baseline_seconds": 30,
+  "fault_seconds": 60,
+  "recovery_seconds": 30,
+  "rate_rps": 5,
+  "timeout_seconds": 2,
+  "delay_ms": 300,
+  "steady_state": {"availability_min": 0.99, "p95_ms_max": 200},
+  "hypothesis": "En estado estable, cuando se agregan 300 ms de latencia de salida a la unica replica sandbox durante 60 s, esperamos que la disponibilidad HTTP sea al menos 99%, el p95 extremo a extremo siga siendo menor a 200 ms y que tras el rollback se recupere ese umbral en 30 s.",
+  "abort": "Interrumpir si 10 solicitudes consecutivas fallan o baseline no cumple; finally elimina qdisc y watchdog independiente lo elimina a los 60 s.",
+  "scope": "Solo eth0 del contenedor target del proyecto actividad2-gameday; sin red host ni servicios existentes."
+}

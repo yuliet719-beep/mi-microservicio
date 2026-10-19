@@ -1,0 +1,52 @@
+{
+  "started_utc": "2026-10-19T03:05:19.509572+00:00",
+  "source_commit": "7d4e7f1913f26262ff23f9deee14ebbfe2b3f797",
+  "plan": {
+    "experiment": "E1-latencia-egress",
+    "baseline_seconds": 30,
+    "fault_seconds": 60,
+    "recovery_seconds": 30,
+    "rate_rps": 5,
+    "timeout_seconds": 2,
+    "delay_ms": 300,
+    "steady_state": {
+      "availability_min": 0.99,
+      "p95_ms_max": 200
+    },
+    "hypothesis": "En estado estable, cuando se agregan 300 ms de latencia de salida a la unica replica sandbox durante 60 s, esperamos que la disponibilidad HTTP sea al menos 99%, el p95 extremo a extremo siga siendo menor a 200 ms y que tras el rollback se recupere ese umbral en 30 s.",
+    "abort": "Interrumpir si 10 solicitudes consecutivas fallan o baseline no cumple; finally elimina qdisc y watchdog independiente lo elimina a los 60 s.",
+    "scope": "Solo eth0 del contenedor target del proyecto actividad2-gameday; sin red host ni servicios existentes."
+  },
+  "baseline": {
+    "requests": 150,
+    "successes": 150,
+    "availability": 1.0,
+    "p95_ms": 26.549,
+    "under_200ms_ratio": 1.0,
+    "throughput_rps": 5.026304325972616,
+    "actual_seconds": 29.843,
+    "aborted": false
+  },
+  "fault": {
+    "requests": 36,
+    "successes": 15,
+    "availability": 0.4166666666666667,
+    "p95_ms": 2038.097,
+    "under_200ms_ratio": 0.0,
+    "throughput_rps": 1.6607617360495732,
+    "actual_seconds": 9.032,
+    "aborted": true
+  },
+  "recovery": {
+    "requests": 150,
+    "successes": 150,
+    "availability": 1.0,
+    "p95_ms": 26.203,
+    "under_200ms_ratio": 0.9933333333333333,
+    "throughput_rps": 5.028831969961192,
+    "actual_seconds": 29.828,
+    "aborted": false
+  },
+  "finished_utc": "2026-10-19T03:06:30.509658+00:00",
+  "hypothesis_accepted": false
+}

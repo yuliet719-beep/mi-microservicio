@@ -1,0 +1,14 @@
+services:
+  target:
+    build:
+      context: ..
+      dockerfile: actividad 2/Dockerfile.sandbox
+    cap_add: [NET_ADMIN]
+    ports: ["127.0.0.1:18082:8000"]
+    cpus: 1.0
+    mem_limit: 256m
+  prometheus:
+    image: prom/prometheus:v2.54.1
+    ports: ["127.0.0.1:19092:9090"]
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro

@@ -1,0 +1,152 @@
+[
+  {
+    "utc": "2026-10-19T03:04:05.557571+00:00",
+    "command": [
+      "git",
+      "-C",
+      "D:\\maestria\\Arquitectura de software\\Observabilidad en Ambientes Productivos\\actividades\\mi-microservicio",
+      "rev-parse",
+      "HEAD"
+    ],
+    "code": 0,
+    "stdout": "7d4e7f1913f26262ff23f9deee14ebbfe2b3f797\n",
+    "stderr": ""
+  },
+  {
+    "utc": "2026-10-19T03:04:05.923765+00:00",
+    "command": [
+      "docker",
+      "compose",
+      "-p",
+      "actividad2-gameday",
+      "-f",
+      "D:\\maestria\\Arquitectura de software\\Observabilidad en Ambientes Productivos\\actividades\\mi-microservicio\\actividad 2\\compose.yaml",
+      "exec",
+      "-T",
+      "target",
+      "tc",
+      "qdisc",
+      "show",
+      "dev",
+      "eth0"
+    ],
+    "code": 0,
+    "stdout": "qdisc noqueue 0: root refcnt 2 \n",
+    "stderr": ""
+  },
+  {
+    "utc": "2026-10-19T03:04:36.145088+00:00",
+    "command": [
+      "docker",
+      "compose",
+      "-p",
+      "actividad2-gameday",
+      "-f",
+      "D:\\maestria\\Arquitectura de software\\Observabilidad en Ambientes Productivos\\actividades\\mi-microservicio\\actividad 2\\compose.yaml",
+      "exec",
+      "-d",
+      "target",
+      "sh",
+      "-c",
+      "sleep 60; tc qdisc del dev eth0 root; date -u > /tmp/rollback.txt"
+    ],
+    "code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "utc": "2026-10-19T03:04:36.528414+00:00",
+    "command": [
+      "docker",
+      "compose",
+      "-p",
+      "actividad2-gameday",
+      "-f",
+      "D:\\maestria\\Arquitectura de software\\Observabilidad en Ambientes Productivos\\actividades\\mi-microservicio\\actividad 2\\compose.yaml",
+      "exec",
+      "-T",
+      "target",
+      "tc",
+      "qdisc",
+      "replace",
+      "dev",
+      "eth0",
+      "root",
+      "netem",
+      "delay",
+      "300ms"
+    ],
+    "code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "utc": "2026-10-19T03:04:36.900850+00:00",
+    "command": [
+      "docker",
+      "compose",
+      "-p",
+      "actividad2-gameday",
+      "-f",
+      "D:\\maestria\\Arquitectura de software\\Observabilidad en Ambientes Productivos\\actividades\\mi-microservicio\\actividad 2\\compose.yaml",
+      "exec",
+      "-T",
+      "target",
+      "tc",
+      "-s",
+      "qdisc",
+      "show",
+      "dev",
+      "eth0"
+    ],
+    "code": 0,
+    "stdout": "qdisc netem 8001: root refcnt 33 limit 1000 delay 300ms seed 5829287841030814641\n Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) \n backlog 0b 0p requeues 0\n",
+    "stderr": ""
+  },
+  {
+    "utc": "2026-10-19T03:04:46.089595+00:00",
+    "command": [
+      "docker",
+      "compose",
+      "-p",
+      "actividad2-gameday",
+      "-f",
+      "D:\\maestria\\Arquitectura de software\\Observabilidad en Ambientes Productivos\\actividades\\mi-microservicio\\actividad 2\\compose.yaml",
+      "exec",
+      "-T",
+      "target",
+      "tc",
+      "qdisc",
+      "del",
+      "dev",
+      "eth0",
+      "root"
+    ],
+    "code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "utc": "2026-10-19T03:04:46.443233+00:00",
+    "command": [
+      "docker",
+      "compose",
+      "-p",
+      "actividad2-gameday",
+      "-f",
+      "D:\\maestria\\Arquitectura de software\\Observabilidad en Ambientes Productivos\\actividades\\mi-microservicio\\actividad 2\\compose.yaml",
+      "exec",
+      "-T",
+      "target",
+      "tc",
+      "-s",
+      "qdisc",
+      "show",
+      "dev",
+      "eth0"
+    ],
+    "code": 0,
+    "stdout": "qdisc noqueue 0: root refcnt 2 \n Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) \n backlog 0b 0p requeues 0\n",
+    "stderr": ""
+  }
+]

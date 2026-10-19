@@ -1,0 +1,111 @@
+# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 1962.0
+python_gc_objects_collected_total{generation="1"} 104.0
+python_gc_objects_collected_total{generation="2"} 767.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 126.0
+python_gc_collections_total{generation="1"} 11.0
+python_gc_collections_total{generation="2"} 1.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="11",patchlevel="17",version="3.11.17"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 3.60644608e+08
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 4.8787456e+07
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.79237903051e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 0.96
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 10.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP http_requests_total Total number of requests by method, status and handler.
+# TYPE http_requests_total counter
+http_requests_total{handler="/metrics",method="GET",status="2xx"} 57.0
+http_requests_total{handler="/hello",method="GET",status="2xx"} 335.0
+# HELP http_requests_created Total number of requests by method, status and handler.
+# TYPE http_requests_created gauge
+http_requests_created{handler="/metrics",method="GET",status="2xx"} 1.7923790379711854e+09
+http_requests_created{handler="/hello",method="GET",status="2xx"} 1.7923790463280253e+09
+# HELP http_request_size_bytes Content length of incoming requests by handler. Only value of header is respected. Otherwise ignored. No percentile calculated. 
+# TYPE http_request_size_bytes summary
+http_request_size_bytes_count{handler="/metrics"} 57.0
+http_request_size_bytes_sum{handler="/metrics"} 0.0
+http_request_size_bytes_count{handler="/hello"} 335.0
+http_request_size_bytes_sum{handler="/hello"} 0.0
+# HELP http_request_size_bytes_created Content length of incoming requests by handler. Only value of header is respected. Otherwise ignored. No percentile calculated. 
+# TYPE http_request_size_bytes_created gauge
+http_request_size_bytes_created{handler="/metrics"} 1.7923790379711967e+09
+http_request_size_bytes_created{handler="/hello"} 1.7923790463280356e+09
+# HELP http_response_size_bytes Content length of outgoing responses by handler. Only value of header is respected. Otherwise ignored. No percentile calculated. 
+# TYPE http_response_size_bytes summary
+http_response_size_bytes_count{handler="/metrics"} 57.0
+http_response_size_bytes_sum{handler="/metrics"} 418563.0
+http_response_size_bytes_count{handler="/hello"} 335.0
+http_response_size_bytes_sum{handler="/hello"} 12060.0
+# HELP http_response_size_bytes_created Content length of outgoing responses by handler. Only value of header is respected. Otherwise ignored. No percentile calculated. 
+# TYPE http_response_size_bytes_created gauge
+http_response_size_bytes_created{handler="/metrics"} 1.7923790379712121e+09
+http_response_size_bytes_created{handler="/hello"} 1.7923790463280475e+09
+# HELP http_request_duration_highr_seconds Latency with many buckets but no API specific labels. Made for more accurate percentile calculations. 
+# TYPE http_request_duration_highr_seconds histogram
+http_request_duration_highr_seconds_bucket{le="0.01"} 392.0
+http_request_duration_highr_seconds_bucket{le="0.025"} 392.0
+http_request_duration_highr_seconds_bucket{le="0.05"} 392.0
+http_request_duration_highr_seconds_bucket{le="0.075"} 392.0
+http_request_duration_highr_seconds_bucket{le="0.1"} 392.0
+http_request_duration_highr_seconds_bucket{le="0.25"} 392.0
+http_request_duration_highr_seconds_bucket{le="0.5"} 392.0
+http_request_duration_highr_seconds_bucket{le="0.75"} 392.0
+http_request_duration_highr_seconds_bucket{le="1.0"} 392.0
+http_request_duration_highr_seconds_bucket{le="1.5"} 392.0
+http_request_duration_highr_seconds_bucket{le="2.0"} 392.0
+http_request_duration_highr_seconds_bucket{le="2.5"} 392.0
+http_request_duration_highr_seconds_bucket{le="3.0"} 392.0
+http_request_duration_highr_seconds_bucket{le="3.5"} 392.0
+http_request_duration_highr_seconds_bucket{le="4.0"} 392.0
+http_request_duration_highr_seconds_bucket{le="4.5"} 392.0
+http_request_duration_highr_seconds_bucket{le="5.0"} 392.0
+http_request_duration_highr_seconds_bucket{le="7.5"} 392.0
+http_request_duration_highr_seconds_bucket{le="10.0"} 392.0
+http_request_duration_highr_seconds_bucket{le="30.0"} 392.0
+http_request_duration_highr_seconds_bucket{le="60.0"} 392.0
+http_request_duration_highr_seconds_bucket{le="+Inf"} 392.0
+http_request_duration_highr_seconds_count 392.0
+http_request_duration_highr_seconds_sum 0.31748809398959565
+# HELP http_request_duration_highr_seconds_created Latency with many buckets but no API specific labels. Made for more accurate percentile calculations. 
+# TYPE http_request_duration_highr_seconds_created gauge
+http_request_duration_highr_seconds_created 1.792379032033822e+09
+# HELP http_request_duration_seconds Latency with only few buckets by handler. Made to be only used if aggregation by handler is important. 
+# TYPE http_request_duration_seconds histogram
+http_request_duration_seconds_bucket{handler="/metrics",le="0.1",method="GET"} 57.0
+http_request_duration_seconds_bucket{handler="/metrics",le="0.5",method="GET"} 57.0
+http_request_duration_seconds_bucket{handler="/metrics",le="1.0",method="GET"} 57.0
+http_request_duration_seconds_bucket{handler="/metrics",le="+Inf",method="GET"} 57.0
+http_request_duration_seconds_count{handler="/metrics",method="GET"} 57.0
+http_request_duration_seconds_sum{handler="/metrics",method="GET"} 0.08012122599757276
+http_request_duration_seconds_bucket{handler="/hello",le="0.1",method="GET"} 335.0
+http_request_duration_seconds_bucket{handler="/hello",le="0.5",method="GET"} 335.0
+http_request_duration_seconds_bucket{handler="/hello",le="1.0",method="GET"} 335.0
+http_request_duration_seconds_bucket{handler="/hello",le="+Inf",method="GET"} 335.0
+http_request_duration_seconds_count{handler="/hello",method="GET"} 335.0
+http_request_duration_seconds_sum{handler="/hello",method="GET"} 0.2373668679920229
+# HELP http_request_duration_seconds_created Latency with only few buckets by handler. Made to be only used if aggregation by handler is important. 
+# TYPE http_request_duration_seconds_created gauge
+http_request_duration_seconds_created{handler="/metrics",method="GET"} 1.7923790379712288e+09
+http_request_duration_seconds_created{handler="/hello",method="GET"} 1.7923790463280625e+09

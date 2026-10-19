@@ -1,0 +1,6 @@
+global:
+  scrape_interval: 2s
+scrape_configs:
+  - job_name: gameday
+    static_configs:
+      - targets: [target:8000]
