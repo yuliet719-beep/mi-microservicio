@@ -1,6 +1,8 @@
 # Actividad 3.3 - Laboratorio integrador de observabilidad
 
-**Estado: solución local ejecutada; requisitos cloud pendientes.** No se dispone de cuenta AWS.
+**Estado: solución local ejecutada y validada en GitHub; requisitos cloud pendientes.**
+La cuenta AWS ya está disponible y se verificó una sesión de consola en `us-east-2`.
+Todavía no se han desplegado los recursos del laboratorio en ella.
 No se afirma cumplimiento del 100%, despliegue en ambas nubes ni una nota garantizada.
 
 Fuente: [Actividad 3.3 y rúbrica](https://unisabanae-learning.unisabana.edu.co/mod/assign/view.php?id=306421),
@@ -34,23 +36,7 @@ reciba las categorías intermedias que exigen una cloud. La docente evalúa las 
 
 ## Arquitectura ejecutada
 
-```mermaid
-flowchart LR
-  C[Cliente] --> A[service-a]
-  A --> EB[Envoy B]
-  EB --> B[service-b]
-  B --> ED[Envoy Data]
-  ED --> D[data-service]
-  D --> DB[(PostgreSQL)]
-  A & B & D --> O[OTel Collector]
-  O --> P[Prometheus]
-  O --> T[Tempo]
-  O --> L[Loki]
-  EB & ED --> P
-  X[Detector AIOps] --> ED
-  X --> P
-  P & T & L --> G[Grafana]
-```
+![Arquitectura local: tres servicios, base de datos y tres pilares](evidencias/architecture.png)
 
 `service.name` separa los tres procesos y `cloud.provider=local` identifica el entorno
 real. El traceparent W3C atraviesa clientes HTTP instrumentados y los proxies.
@@ -97,6 +83,14 @@ No se necesitan para consultar Grafana como lector. El token de control es disti
 de las credenciales de demostración del endpoint `/auth`.
 
 ## Pruebas y seguridad
+
+La [ejecución del laboratorio en GitHub Actions](https://github.com/yuliet719-beep/mi-microservicio/actions/runs/39196678190)
+terminó en **success**, incluyendo ambos experimentos, verificación de evidencias y
+validación Terraform de AWS/GCP. También pasó el
+[pipeline general](https://github.com/yuliet719-beep/mi-microservicio/actions/runs/39196678197).
+El resultado y los identificadores de los jobs se conservan en `evidencias/github-actions.json`.
+Estas ejecuciones verifican el commit funcional `2e84181`; los cambios posteriores
+de documentación y evidencias no modifican el código de aplicación validado.
 
 ```powershell
 docker run --rm --network none -v "${PWD}/tests:/lab/tests:ro" actividad3-observabilidad:local python -m unittest discover -s tests -v

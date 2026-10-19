@@ -1,0 +1,48 @@
+{
+  "verified_at_utc": "2026-10-19T04:03:35.2951313Z",
+  "head_sha": "2e84181d4ee686c925e7cfc1e5dda8dd6a5546a5",
+  "scope": "GitHub Actions validates sandbox and IaC; no cloud apply",
+  "workflows": [
+    {
+      "id": 39196678197,
+      "name": "CI Pipeline",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/yuliet719-beep/mi-microservicio/actions/runs/39196678197"
+    },
+    {
+      "id": 39196678190,
+      "name": "Actividad 3 - Sandbox de observabilidad",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/yuliet719-beep/mi-microservicio/actions/runs/39196678190"
+    }
+  ],
+  "jobs": [
+    {
+      "id": 117880850880,
+      "name": "sandbox",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 117880851029,
+      "name": "terraform (gcp)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 117880851072,
+      "name": "terraform (aws)",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "artifacts": [
+    {
+      "name": "actividad3-evidencias-ci",
+      "size_in_bytes": 970962,
+      "expired": false
+    }
+  ]
+}

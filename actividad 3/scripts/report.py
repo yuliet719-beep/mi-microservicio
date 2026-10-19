@@ -91,7 +91,7 @@ table(['Resultado medido', 'Valor'], [
     ['Alerta por errores en data-service', f"{R['mttd_s']['errors']:.2f} s"],
     ['Comprobaciones de evidencias', f'{sum(V.values())}/{len(V)} satisfactorias'],
     ['Entorno efectivamente ejecutado', 'Docker local; cloud.provider=local'],
-    ['Despliegue en AWS y GCP', 'Pendiente; no se dispone de cuenta AWS']
+    ['Despliegue en AWS y GCP', 'Pendiente; sesión AWS disponible en us-east-2']
 ], [300,168])
 p('<b>Conclusión de alcance.</b> La entrega demuestra el núcleo local y los dos experimentos, pero no acredita el 100% de los requisitos. Cloud SQL, RDS, service mesh gestionado, AIOps nativo, VPC Flow Logs y SCC/Security Hub requieren despliegue y evidencia cloud. La infraestructura adjunta fue validada, no aplicada. No se solicita asignar una nota automática.')
 p('La modalidad del enunciado es grupal de tres integrantes. No se recibieron los nombres del equipo; deben incorporarse en la sustentación. El repositorio y los artefactos permiten reproducir el trabajo sin atribuir intervenciones personales no verificadas.', small)

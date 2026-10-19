@@ -1,6 +1,9 @@
 # Despliegue cloud: pendiente de cuentas y ejecución
 
 Estado: no aplicado. La ejecución demostrada es Docker local. No existen evidencias de GCP/AWS.
+Actualización: se verificó una sesión AWS disponible en `us-east-2` (Ohio). No se
+publican identificadores de cuenta ni credenciales. La región y el límite de gasto
+del despliegue deben acordarse antes de crear recursos; GCP permanece pendiente.
 Los directorios `iac/gcp` e `iac/aws` preparan VPC, VM y PostgreSQL gestionado privado,
 Flow Logs, acceso administrativo limitado y controles básicos. No constituyen por sí
 solos la solución de observabilidad cloud completa. Revisar costos y permisos en una

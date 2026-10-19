@@ -39,4 +39,6 @@ Recomendación: repositorio público con tag final v1.0; nunca caos en recursos 
 | Madurez y presentación | 0.75 | Autoevaluación completa, roadmap accionable y demo en vivo |
 
 Esta transcripción de trabajo conserva los requisitos; no modifica la rúbrica oficial.
-La ausencia de cuentas cloud impide acreditar todos los requisitos del nivel excelente.
+Los despliegues cloud y sus evidencias siguen pendientes para acreditar todos los
+requisitos del nivel excelente. La cuenta AWS ya está disponible; todavía no se
+han aplicado los recursos de este laboratorio.
